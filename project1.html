@@ -22,6 +22,7 @@
         </nav>
     </header>
     <main>
+        <hr>
         <section id="project1">
             <h2>Predicting bookings from enquiry data for Airbnb</h2>
             <ol>
@@ -56,6 +57,7 @@
                     </ul>
             </ol>
         </section>
+        <hr>
         <section id="executive summary">
             <h2>Executive Summary</h2>
             <h3>1.1 Objective</h3>
@@ -69,6 +71,7 @@
                     <li>Recommended that Airbnb focus its marketing budget in the front end of year only since this is when first contact is made for booking enquiries</li>
                 </ul>
         </section>
+        <hr>
         <section id="introduction">
             <h2>Introduction</h2>
             <p>I was interested in this particular problem as I have many years experience working in travel and ecommerce, so the opportunity to perform some analysis on one of the industry’s great success stories appealed.
@@ -104,6 +107,7 @@
             </ol>
             <p>The second part of the journey raises multiple questions such as do successful bookings have a faster response time than unsuccessful ones?  Does this change depending on the origin of the guest?  Maybe the host prefer not to receive certain types of guest?  Additionally other factors could play into the decision such as party size or seasonality.  Or maybe something as seemingly trivial as the number of number of words in a user profile have some sort of impact?</p>
         </section>
+        <hr>
         <section id="methods">
         <h2>Methods</h2>
         <h3>3.1 Joining Data & Cleaning</h3>
@@ -146,19 +150,18 @@
                 <li>False Negatives (FN) = instances where the actual value is 'booking' = 1 but the model predicted 'booking' = 0</li>
             </ul>
             <p><strong>Accuracy</strong> = The overall correctness of the model = TP+TN / TP+TN+FP+FN</p>
-            <p>This is important to ensure we have clear signals over what the data means and not draw false conclusions
-However if there is a class imbalance in our dataset the accuracy can be skewed</p>
+            <p>This is important to ensure we have clear signals over what the data means and not draw false conclusions.  However if there is a class imbalance in our dataset the accuracy can be skewed</p>
             <p><strong>Precision</strong> = Accuracy of positive predictions = TP / TP+FP</p>
-            <p>High precision indicates that when the model predicts a positive result, it is likely to be correct
-Goal for this metric would be to get as few mistakes as possible when guessing positive labels (bookings)</p>
+            <p>High precision indicates that when the model predicts a positive result, it is likely to be correct. Goal for this metric would be to get as few mistakes as possible when guessing positive labels (bookings)</p>
             <p><strong>Recall/Sensitivity</strong> = Model's ability to capture all positive instances = TP / TP+FN</p>
             <p>Measures the proportion of correctly predicted positive instances as a proportion of ACTUAL positive instances</p>
             <p><strong>F1 Score</strong> = Maximise precision and recall = 2 x TP / 2 x TP+FP+FN</p>
             <p>F1 is the harmonic mean and weights the score towards the lower of the two components scores essentially penalising precision and recall from disagreeing with each other too much and correctly reflects when either of them fall too close to the value of zero</p>
             <p>F1 score is commonly used</p>
         </section>
+        <hr>
         <section id="results">
-            <h2></h2>
+            <h2>Exploratory Data Analysis</h2>
             <p>I first split the data to categorise the rows by the type of enquiry. Instant_book is the event that Airbnb value the most since it does not require the host to confirm the booking</p>
             <img src="assets/images/eda - query type proportions.PNG" alt="Description of the image">
             <p>I then wanted to know how how this might change based on party size since this could provide insight into demand. When the group size is 4 people there is a distinct increase in the discrepancy between number of queries and number of bookings, in favour of queries, suggesting there might be difficulty for groups of 4 trying to book.</p>
@@ -181,9 +184,38 @@ Goal for this metric would be to get as few mistakes as possible when guessing p
             <p>Further analysis with wider date range required to understand how much of an impact property reviews have on bookings</p>
             <p>Recommend A/B testing on website to accurately measure impact</p>
             <p>Recommend further encouragement of guests to review properties after their checkout date</p>
+            <p>Finally, when I examined which month guests were making contact with hosts, I found this astonishing result. It seems that the first contact occurs only in the first 6 months of the year.</p>
+            <img src="assets/images/eda - booking period.PNG" alt="Description of the image">
+            <p>I suspect this result is due to missing data, since there appears to be an absence of it .  However, the dataset includes multiple years, so it should be reliable.  If this is true, then Airbnb should be focus their marketing efforts on this period.</p>
+            <p>By contrast, August is by far the most popular month for travel.</p>
+            <img src="assets/images/eda - travel by month.PNG" alt="Description of the image">
+            <p><strong>Take-Away</strong></p>
+            <p>Recommend focusing marketing budget in the first half of the year only, perhaps shifting forward one month ie. Dec - May (rather than Jan - Jun). Consider A/B tests encouraging guests to book early for travel in August to avoid being disappointed</p>
+            <h2>Machine Learning</h2>
+            <p>For classification models the naive benchmark is the majority class, meaning that all rows would be classified as non-bookings giving us an accuracy score of 58%</p>
+            <p>We ran 3 models as with our earlier ‘overbooking’ analysis.  These were, single decision tree, tree ensemble (random forest) and XG Boosted model.</p>
+            <p>The confusion matrices for each of our 3 models are shown.</p> 
+            <br>
+            <p>True Positive (lower right)</p>
+            <p>False Positive (upper right)</p>
+            <p>True Negative (upper left)</p>
+            <p>False Negative (lower left)</p>
+            <br>
+            <p>We are most interested in the model that can correctly identify our bookings with as few misidentifications as possible. We an see that the XGBoost model was able to accurately identify the  most actual bookings (1610). However the XGBoost model also made the most False Positive errors.</p> 
+            <img src="assets/images/ml - all models - confusion.PNG" alt="Description of the image">
+            <p>Comparing performance scores, we can see that the results are very close.  Given that we are most interested in identifying bookings and doing so correctly, I would recommend using the Random Forest model since it has the highest precision score, remember that high precision indicates that when the model predicts a positive result, it is likely to be correct.</p>
+            <p>If we look back to our confusion matrix we have:</p>
+            <p>Correctly identified non-bookings = 3,447</p>
+            <p>Correctly identified bookings = 1,569</p>
+            <p>So from a total of 6,972 rows in our test set, our model correctly identified</p>
+            <p>72% of rows, firmly beating our naive benchmark.</p>  
+            <p>Of the 2,897 actual bookings, our model correctly identified 54% of them.</p>
+            <img src="assets/images/ml - all models - f1 and scores - bar graph.PNG" alt="Description of the image">
         </section>
+        <hr>    
         <section id="conclusion">
         </section>
+        <hr>
         <section id="appendices">
         </section>
     </main>
