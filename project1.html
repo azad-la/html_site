@@ -127,7 +127,7 @@
                 <li><strong>Acceptance time</strong> - time in hours from first interaction to acceptance time</li>
                 <li><strong>Overbooking</strong> - binary value, 1 = book_it events with no booking timestamp</li>
                 <li><strong>Booking</strong> - binary value, 1  = booking timestamp (‘ts_booking_at’) present</li>
-            </ul>>
+            </ul>
         <h3>3.2 Machine Learning Prep</h3>
             <p>There were many features in the dataset with the potential to interact with each other resulting in hidden patterns that work together to influence bookings. 
             <img src="assets/images/ml - dataset - numerical - correlations.PNG" alt="Description of the image">
@@ -158,6 +158,13 @@ Goal for this metric would be to get as few mistakes as possible when guessing p
             <p>F1 score is commonly used</p>
         </section>
         <section id="results">
+            <p>I first split the data to categorise the rows by the type of enquiry. Instant_book is the event that Airbnb value the most since it does not require the host to confirm the booking</p>
+            <img src="eda - query type proportions.PNG" alt="Description of the image">
+            <p>I then wanted to know how how this might change based on party size since this could provide insight into demand. When the group size is 4 people there is a distinct increase in the discrepancy between number of queries and number of bookings, in favour of queries, suggesting there might be difficulty for groups of 4 trying to book.</p>
+            <img src="eda - queries and bookings by party size.PNG" alt="Description of the image">
+            <p>However, when we combine both booking types, we find that actually queries, appear to be well matched by bookings for 4 people.  It should be noted that contact_me events do still outnumber booking events for 4 people though.  By comparison, the number of bookings for 2 people, far outstrips the number of contact_me events suggesting that booking is 2 is either much easier or that there is a greater supply of rental properties. Contact_me events for 6 people also outstrips the number of queries suggesting more difficulting in closing bookings for parties of this size. </p>
+            <p><strong>Take-Away</strong> Seek to understand the content of enquiries, to see if expanded property information can increase the propensity of bookings for larger groups. Alternatively this might provide insight into supply & demand gaps.</p>
+            <img src="eda - queries and combined bookings by party size.PNG" alt="Description of the image">
         </section>
         <section id="conclusion">
         </section>
