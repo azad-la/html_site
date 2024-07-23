@@ -169,7 +169,18 @@ Goal for this metric would be to get as few mistakes as possible when guessing p
             <p>As I was examining the data in preparation for our machine learning models I noticed that 52% of all book_it events did not result in actual bookings, defined by the presence of a booking timestamp.  In the context of the journey that I mentioned in the introduction these events are like gold dust because they signify that these guests have taken all the necessary steps and are primed and ready to book. However something, presumably out of their control, has blocked this and by identifying these events and analysing their component features we might be able to glean valuable information on how Airbnb can easily increase bookings on their platform.  Should they limit their marketing to a particular time of year?  Should they try to increase bed capacity at certain times? Do they have enough properties in particular neighborhoods or for particular party sizes?  I created a new feature called ‘overbooking’ for these events and applied a decision tree model, a tree ensemble and a boosted model to the data to see if a pattern could be discerned.  Unfortunately, none of the models were able to accurately predict overbookings leading me to conclude that the answer is not in the supplied datasets.</p>
             <p><strong>Take-Away</strong></p>
             <p>I would therefore recommend further analysis of these events, either through analysing message content (including sentiment analysis) or by contacting hosts to understand these situations better.  The outcome may be able to inform the merchandising/ecommerce teams to encourage early booking for popular properties or to help Airbnb expand its supply of particular types of property that often overbooked.</p>
-        <a href="project1.html#appendix6"><strong>See Appendix 6 for link to Jupyter notebook</strong></a>
+            <a href="project1.html#appendix6"><strong>See Appendix 6 for link to Jupyter notebook</strong></a>
+            <p>My next stop was to investigate which properties had not yet received any queries since this might provide some insight into guest demand.  I created a new table and looked at some of the features of these properties.</p>
+            <p>What immediately stood out was the count of reviews.  Now, this may be a simple case of self-selection bias where we would expect the reviews to be about zero since no bookings have been made.  However, the date range on our dataset was limited to mostly 2016 and these properties could have been let at other times so we don’t want to disregard this out of hand. </p>
+            <img src="assets/images/eda - properties with no bookings.PNG" alt="Description of the image">
+            <p>I re-ran the analysis to find the average count of reviews for all properties and found:</p>
+            <p>Properties with no rental in 2016		0.4</p>
+            <p>All Properties				            7.2</p>
+            <p>Running a T-Test on the results confirmed that there is a significant difference between the two means of the datasets and we can be certain of this at the 99% confidence level.  Again we note that this may simply be a case of the metric being influenced by the very condition it seeks to measure.</p>
+            <p><strong>Take-Away</strong></p>
+            <p>Further analysis with wider date range required to understand how much of an impact property reviews have on bookings</p>
+            <p>Recommend A/B testing on website to accurately measure impact</p>
+            <p>Recommend further encouragement of guests to review properties after their checkout date</p>
         </section>
         <section id="conclusion">
         </section>
