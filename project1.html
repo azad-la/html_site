@@ -105,6 +105,39 @@
             <p>The second part of the journey raises multiple questions such as do successful bookings have a faster response time than unsuccessful ones?  Does this change depending on the origin of the guest?  Maybe the host prefer not to receive certain types of guest?  Additionally other factors could play into the decision such as party size or seasonality.  Or maybe something as seemingly trivial as the number of number of words in a user profile have some sort of impact?</p>
         </section>
         <section id="methods">
+        <h2>Methods</h2>
+        <h3>3.1 Joining Data & Cleaning</h3>
+        <p><strong>The supplied datasets were:</strong></p> 
+            <ol>
+                <li><strong>Contacts</strong> - 27,887 rows x 14 columns - featuring a row for every time that a user made an enquiry for a stay at a listing in Rio de Janeiro</li>
+                <li><strong>Listings</strong> - 13,038 rows x 4 columns - featuring data for every listing (property) on the market</li>
+                <li><strong>Contacts</strong> - 31,525 rows x 3 columns - featuring data for every user.  No personally Identifiable Information</li>
+            </ol>
+        <p><strong>Some data cleaning was required as follows:</strong></p>
+            <ul>
+                <li>Contacts - first interaction date was not in a date format as many rows had an addition dot zero attached</li>
+                <li>Listings - total_reviews had about 40 rows with negative counts.  These were made positive</li>
+                <li>Users - removed duplicate rows </li>
+                <li>Establish match between contacts [‘id_guest_anon’] and users [‘id_user_anon] for joining tables</li>
+                <li>All tables were joined using Pandas Merge.  The joined table is an extension of the contacts table,  so row is a guest enquiry but also contains details on the user and the property</li>
+            </ul>
+        <p><strong>New features created:</strong></p>
+            <ul>
+                <li><strong>Lead time</strong> - time in days from confirmed booking timestamp to check in date</li>
+                <li><strong>Acceptance time</strong> - time in hours from first interaction to acceptance time</li>
+                <li><strong>Overbooking</strong> - binary value, 1 = book_it events with no booking timestamp</li>
+                <li><strong>Booking</strong> - binary value, 1  = booking timestamp (‘ts_booking_at’) present</li>
+            </ul>>
+        <h3>3.2 Machine Learning Prep</h3>
+            <p>There were many features in the dataset with the potential to interact with each other resulting in hidden patterns that work together to influence bookings.  
+            <br>The only way to realistically address all of these is to employ machine learning and use computationally intensive methods to find patterns in the data.<br>Having been unsuccessful in identifying patterns inherent in failed book_it events, I looked to machine learning algorithms again to see if we could successfully predict whether a query will convert to a booking.  By unpicking this we might be able to find common factors that will help inform Airbnb’s marketing, merchandising (ecommerce) and supply chain strategies.
+            <br>The first step was to define our problem.
+            <br>‘Can we predict whether a query will result in a booking using <br>patterns found in previous rental enquiries?’</p>
+            <p>The second step was to refine our dataset.<br>I looked at whether any values were strongly correlated with our
+            <br>target variable.  The image on the right shows correlations for numerical 
+            <br>Values in the dataset, however it turned out that quite a few <br>categorical values were highly correlated.  I removed any that would <br>only be populated in the event of a booking since these would bias 
+            <br>the results. </p>
+            <p>Bookings were defined as an enquiry with a booking timestamp.<br>Our target variable was the column ‘booking’ which was a binary value; <br>where 1 = booking, 2 = non-booking</p>
         </section>
         <section id="results">
         </section>
