@@ -129,14 +129,12 @@
                 <li><strong>Booking</strong> - binary value, 1  = booking timestamp (‘ts_booking_at’) present</li>
             </ul>>
         <h3>3.2 Machine Learning Prep</h3>
-            <p>There were many features in the dataset with the potential to interact with each other resulting in hidden patterns that work together to influence bookings.  
+            <p>There were many features in the dataset with the potential to interact with each other resulting in hidden patterns that work together to influence bookings. 
+            <img src="assets/images/ml - dataset - numerical - correlations.PNG" alt="Description of the image">
             <br>The only way to realistically address all of these is to employ machine learning and use computationally intensive methods to find patterns in the data.<br>Having been unsuccessful in identifying patterns inherent in failed book_it events, I looked to machine learning algorithms again to see if we could successfully predict whether a query will convert to a booking.  By unpicking this we might be able to find common factors that will help inform Airbnb’s marketing, merchandising (ecommerce) and supply chain strategies.
             <br>The first step was to define our problem.
-            <br>‘Can we predict whether a query will result in a booking using <br>patterns found in previous rental enquiries?’</p>
-            <p>The second step was to refine our dataset.<br>I looked at whether any values were strongly correlated with our
-            <br>target variable.  The image on the right shows correlations for numerical 
-            <br>Values in the dataset, however it turned out that quite a few <br>categorical values were highly correlated.  I removed any that would <br>only be populated in the event of a booking since these would bias 
-            <br>the results. </p>
+            <br><strong>‘Can we predict whether a query will result in a booking using patterns found in previous rental enquiries?’</strong></p>
+            <p>The second step was to refine our dataset. I looked at whether any values were strongly correlated with our target variable.  The image on the right shows correlations for numerical values in the dataset, however it turned out that quite a few categorical values were highly correlated.  I removed any that would <br>only be populated in the event of a booking since these would bias the results. </p>
             <p>Bookings were defined as an enquiry with a booking timestamp.<br>Our target variable was the column ‘booking’ which was a binary value; <br>where 1 = booking, 2 = non-booking</p>
         </section>
         <section id="results">
