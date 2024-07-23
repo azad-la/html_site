@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="about-page">
     <header>
         <h1>Darren Bridger</h1>
         <nav>
@@ -158,6 +158,7 @@ Goal for this metric would be to get as few mistakes as possible when guessing p
             <p>F1 score is commonly used</p>
         </section>
         <section id="results">
+            <h2></h2>
             <p>I first split the data to categorise the rows by the type of enquiry. Instant_book is the event that Airbnb value the most since it does not require the host to confirm the booking</p>
             <img src="assets/images/eda - query type proportions.PNG" alt="Description of the image">
             <p>I then wanted to know how how this might change based on party size since this could provide insight into demand. When the group size is 4 people there is a distinct increase in the discrepancy between number of queries and number of bookings, in favour of queries, suggesting there might be difficulty for groups of 4 trying to book.</p>
@@ -165,6 +166,10 @@ Goal for this metric would be to get as few mistakes as possible when guessing p
             <p>However, when we combine both booking types, we find that actually queries, appear to be well matched by bookings for 4 people.  It should be noted that contact_me events do still outnumber booking events for 4 people though.  By comparison, the number of bookings for 2 people, far outstrips the number of contact_me events suggesting that booking is 2 is either much easier or that there is a greater supply of rental properties. Contact_me events for 6 people also outstrips the number of queries suggesting more difficulting in closing bookings for parties of this size. </p>
             <p><strong>Take-Away</strong> Seek to understand the content of enquiries, to see if expanded property information can increase the propensity of bookings for larger groups. Alternatively this might provide insight into supply & demand gaps.</p>
             <img src="assets/images/eda - queries and combined bookings by party size.PNG" alt="Description of the image">
+            <p>As I was examining the data in preparation for our machine learning models I noticed that 52% of all book_it events did not result in actual bookings, defined by the presence of a booking timestamp.  
+In the context of the journey that I mentioned in the introduction these events are like gold dust because they signify that these guests have taken all the necessary steps and are primed and ready to book. However something, presumably out of their control, has blocked this and by identifying these events and analysing their component features we might be able to glean valuable information on how Airbnb can easily increase bookings on their platform.  Should they limit their marketing to a particular time of year?  Should they try to increase bed capacity at certain times? Do they have enough properties in particular neighborhoods or for particular party sizes?  
+
+I created a new feature called ‘overbooking’ for these events and applied a decision tree model, a tree ensemble and a boosted model to the data to see if a pattern could be discerned.  Unfortunately, none of the models were able to accurately predict overbookings leading me to conclude that the answer is not in the supplied datasets.</p>
         </section>
         <section id="conclusion">
         </section>
