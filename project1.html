@@ -136,6 +136,26 @@
             <br><strong>‘Can we predict whether a query will result in a booking using patterns found in previous rental enquiries?’</strong></p>
             <p>The second step was to refine our dataset. I looked at whether any values were strongly correlated with our target variable.  The image on the right shows correlations for numerical values in the dataset, however it turned out that quite a few categorical values were highly correlated.  I removed any that would <br>only be populated in the event of a booking since these would bias the results. </p>
             <p>Bookings were defined as an enquiry with a booking timestamp.<br>Our target variable was the column ‘booking’ which was a binary value; <br>where 1 = booking, 2 = non-booking</p>
+        <h3>3.3 Machine Learning Assessment</h3>
+            <p>In order to be able to assess our model we will first set a naive benchmark for accuracy, which for classification models is the majority class.  That is to say that if we just guessed whether an enquiry would lead to a booking based on the results of other rows, then we would guess that it is not a booking since 58% of all enquiries did not result in bookings </p>
+            <p>The confusion matrix consists of 4 quadrants:</p>
+            <ul>
+                <li>True Positives (TP) = instance where the actual value is 'booking' = 1 and the model predicted 'booking' = 1 </li>
+                <li>False Positives (FP) = instances where the actual value is 'booking' = 0 but the model predicted 'booking' = 1</li>
+                <li>True Negatives (TN) = instances where the actual value is 'booking' = 0 and the model predicted 'booking' = 0</li>
+                <li>False Negatives (FN) = instances where the actual value is 'booking' = 1 but the model predicted 'booking' = 0</li>
+            </ul>
+            <p><strong>Accuracy</strong> = The overall correctness of the model = TP+TN / TP+TN+FP+FN</p>
+            <p>This is important to ensure we have clear signals over what the data means and not draw false conclusions
+However if there is a class imbalance in our dataset the accuracy can be skewed</p>
+            <p><strong>Precision</strong> = Accuracy of positive predictions = TP / TP+FP</p>
+            <p>High precision indicates that when the model predicts a positive result, it is likely to be correct
+Goal for this metric would be to get as few mistakes as possible when guessing positive labels (bookings)</p>
+            <p><strong>Recall/Sensitivity</strong> = Model's ability to capture all positive instances = TP / TP+FN</p>
+            <p>Measures the proportion of correctly predicted positive instances as a proportion of ACTUAL positive instances</p>
+            <p><strong>F1 Score</strong> = Maximise precision and recall = 2 x TP / 2 x TP+FP+FN</p>
+            <p>F1 is the harmonic mean and weights the score towards the lower of the two components scores essentially penalising precision and recall from disagreeing with each other too much and correctly reflects when either of them fall too close to the value of zero</p>
+            <p>F1 score is commonly used</p>
         </section>
         <section id="results">
         </section>
