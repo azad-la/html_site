@@ -42,7 +42,7 @@ main {
     flex-direction: column;
     justify-content: center; /* Center vertically */
     align-items: center; /* Center horizontally */
-    text-align: center; /* Center text horizontally */
+    text-align: left; /* Left-align text within the main content */
 }
 
 /* Header styling for the index page */
@@ -50,9 +50,11 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center content vertically within header */
-    align-items: center; /* Center content horizontally within header */
+    align-items: flex-start; /* Align items to the start (left) within header */
     height: 50vh; /* Half of the viewport height */
     margin-bottom: 20px;
+    width: 100%; /* Ensure the header takes full width */
+    padding: 0 20px; /* Optional padding for spacing */
 }
 
 header h1 {
