@@ -254,6 +254,54 @@
         </section>
         <hr>
         <section id="appendices">
+            <section id="appendix 1">
+                <h3>Enquiries by neighborhood, room type and party size</h3>
+                    <p>During my exploratory data analysis, I looked at how some of the key features interacted to unearth valuable insights around demand. In the table, each row sums to 1 and represents the count of all enquiries for that particular room type for that particular neighborhood, split by party size. For example, 36% of entire home queries in Copacabana were for 2 people, while 58% of shared room queries in Copacabana were for 1 person bookings.  This is particular statistic is not surprising, but the overall table may be helpful to Airbnb executives wishing to understand demand. In appendix 2, I took this one step further and looked atoccupancy rates by month.</p>
+                    <img src="assets/images/appendix 1 - proportion of all enquiries by neighborhood, room type and party size.PNG" alt="Description of the image">
+            </section>
+            <section id="appendix 2">
+                <h3>Occupancy Rate</h3>
+                    <p>Occupancy rate is a metric that some holiday companies track to understand how well they are filling their allocations of property.  In the case of Airbnb, since they don’t own or lease the properties then this may not be as pertinent, but as a measure of performance it is a helpful guide and would help inform strategies around property.  Occupancy rate is usually performed at the property level.  In this example, I aggregated to the neighborhood level, but it would not be difficult to update the analysis to property level.  This is of course an approximate occupancy rate as some properties may not be available for rent every night of the year.</p>
+                    <p>The method for this was:</p>
+                    <p><strong>Calculate number of nights booked per month:</strong></p>
+                    <ul>
+                        <li>Create a new dataset for bookings only in 2016 (just one complete year to avoid issues duplicating booking the same dates in different years)</li>
+                        <li>Create a function that looks at the check-in date and the checkout date for each booking and assigns the number of days to the relevant month E.g 29 June 2016  - 3 July would be: June = 2 and July = 2</li>
+                        <li>Add the number of nights taken per month to the new dataset</li>
+                    </ul>
+                    <p><strong>Calculate the number of nights available:</strong></p>
+                    <ul>
+                        <li>Create a calendar dataframe with the number of days per month</li>
+                        <li>Create a new dataset with property id as the primary key, along with room_type and neighborhood</li>
+                        <li>Add the calendar dataframe to the new property dataset</li>
+                        <li>Aggregate to neighborhood level at the same time, multiplying the number of nights per month by the count of properties, to get the total number of nights available per neighborhood per month</li>
+                        <li>Aggregate the number of nights booked per month to neighborhood level</li>
+                        <li>Merge the nights available table with the nights taken table, finding the nights taken as a proportion of nights available</li>
+                        <li>This was a difficult piece of work that came with some problems that still need to be overcome</li>
+                        <li>Some additional rows were added to the dataset and these need to be investigated, but overall I think this works as a proof of concept and may be helpful to the Airbnb team</li>
+                    </ul>
+                <img src="assets/images/appendix 2 - occupancy rate.PNG" alt="Description of the image">
+            </section>
+            <section id="appendix 3">
+                <h3>Neighborhoods by demand</h3>
+                <p>I wanted to understand a little about which neighborhoods were most in demand.  The table here shows the 10 most in demand neighborhoods by query.</p>
+                 <img src="assets/images/eda - top ten hoods.PNG" alt="Description of the image">
+                <p>The contact & booking columns show the proportion of all contact & booking events by neighborhood</p>
+            </section>
+            <section id="appendix 4">
+                <h3>ML Methods</h3>
+                <p>The standard process for running machine learning algorithms on data is to split the data into two sets; the training set and the test set.</p>
+                <p>We let our algorithms learn the relationships on the training data and then we use the test set (the unseen data) to see if those patterns still hold.  If they do then our models have done a good job of recognising underlying patterns and can then be used to make predictions, in our case to guess whether an initial enquiry will lead to a booking.</p>
+                <p>Sometimes, however our models can be overfit, that is to say that instead of understanding relationships, they remember patterns and when we feed them the unseen test data, they perform badly because the patterns are no longer the same.</p>
+                <p><strong>Decision trees</strong> are popular because they are easy to interpret, but they are also prone to overfit.  We can use cross-validation to help overcome this. First of all, a decision tree looks at values in your data and splits accordingly in order to get the most pure categories.  So for example a decision tree being trying to identify an animal, might first split on whether the animal lives on land or at sea, and then (following the land branch) on whether the animal can fly or not. It might then move onto number of legs. Each time it is looking to make the distinction more clear and each decision adds a layer of depth to the tree. The better the distinction, the cleaner (or more pure) the dataset.  Of course, with animals, you can imagine that in order to be really clear there are a lot of questions to ask and you can be very specific.  When the model is asked to classify a new animal that it hasn’t seen before the model might perform badly because it is too specific or overfit. To combat this, we want a more generalised model that performs worse on the training data, but because it is more generalised performs better on unseen data.  In other words, we want a better predictor. </p>
+                <img src="assets/images/ml - dt - cross-validation graph.PNG" alt="Description of the image">
+                <p><strong>Cross-validation</strong> is a method in which we take just our training data (so our test data is left alone) and split it up (into say 5 iterations as shown above).  We then randomly split each iteration into 5 blocks of data, train our model on 4 of those blocks and test on the remaining 1 block.  We take the average score from all iterations and it gives us a good indication of how well the model will perform.  So if we want to find the optimal depth for our animal predictor tree, then we can run cross-validation for the number of depths that we want to compare.  The optimal depth is usually based on a measure called accuracy, which looks at the overall correctness of the model (combination of True Positives and True Negatives).</p>
+                <p>Another way to improve the performance of individual decision trees is to use a process known as bagging.  Bagging helps prevent overfitting by combining the predictions of multiple models. As the name suggests tree ensembles are groups of trees where the performance of the group is aggregated.  In the case of classification models which we are using for our analysis, the final prediction is typically made by majority voting.  Going back to our animal example, if 4 trees say that the animal is a dog and 3 trees say that the animal is a cat, then it will be classified dog. Another technique called Boosting is similar in that it uses multiple trees, however, it selects poorly performing models and iterates through them, improving each subsequent tree by learning from the error in the previous one.</p>
+                <p>In our analysis to find the best predictor of a booking we havecompared decision tree, random forest (tree ensemble) and XGBoost models using cross validation for optimal performance. Image shows the map of our decision tree for the booking analysis.</p>
+                 <img src="assets/images/ml - dt - tree plot.PNG" alt="Description of the image">
+            </section>
+            <section id="appendix 5">
+            </section>
         </section>
     </main>
     <footer>
