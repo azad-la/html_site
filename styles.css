@@ -33,7 +33,7 @@ body.index-page {
 
 /* Responsive h1 styling for the index page */
 body.index-page h1 {
-    font-size: 2rem; /* Base size for h1 on index page */
+    font-size: 4rem; /* Base size for h1 on index page */
     font-weight: 800; /* ExtraBold font weight */
     color: #ffffff; /* White color for h1 text */
     line-height: 1.2;
