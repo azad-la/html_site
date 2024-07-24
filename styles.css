@@ -1,3 +1,8 @@
+/* Set base font size on the root element */
+html {
+    font-size: 100%; /* 100% is typically 16px, which can be customized */
+}
+
 body {
     font-family: 'Zain', sans-serif;
     font-weight: 400;
@@ -5,30 +10,33 @@ body {
     color: #333;
     background-color: #57facc;
     padding: 20px;
+    font-size: 1rem; /* Base font size, can be adjusted */
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+    body {
+        font-size: 1.1rem; /* Slightly larger font for tablets */
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        font-size: 1.2rem; /* Larger font for desktops */
+    }
 }
 
 /* Specific styles for the index page */
 body.index-page {
-    font-family: 'Zain', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #333;
     background-color: #57facc;
-    padding: 20px;
 }
 
 /* Specific styles for the about page */
 body.portfolio-page {
-    font-family: 'Zain', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #333;
     background-color: #ffffff;
-    padding: 20px;
 }
 
-
-
+/* Other styles remain unchanged */
 header {
     margin-bottom: 20px;
 }
