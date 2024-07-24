@@ -1,16 +1,16 @@
 /* Set base font size on the root element */
 html {
-    font-size: 100%; /* 100% is typically 16px, which can be customized */
+    font-size: 100%; /* Typically 16px */
 }
 
 body {
     font-family: 'Zain', sans-serif;
     font-weight: 400;
     line-height: 1.6;
-    color: #fff;
+    color: #333; /* Default color for body text */
     background-color: #57facc;
     padding: 20px;
-    font-size: 4rem; /* Base font size, can be adjusted */
+    font-size: 1rem; /* Base font size */
 }
 
 /* Increase font size for larger screens */
@@ -33,9 +33,9 @@ body.index-page {
 
 /* Responsive h1 styling for the index page */
 body.index-page h1 {
-    font-size: 3rem; /* Base size for h1 on index page */
-    font-weight: bold;
-    color: #ffffff;
+    font-size: 2rem; /* Base size for h1 on index page */
+    font-weight: 800; /* ExtraBold font weight */
+    color: #ffffff; /* White color for h1 text */
     line-height: 1.2;
     margin-bottom: 20px;
 }
@@ -52,7 +52,7 @@ body.index-page h1 {
     }
 }
 
-/* Specific styles for the about page */
+/* Specific styles for the portfolio page */
 body.portfolio-page {
     background-color: #ffffff;
 }
