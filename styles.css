@@ -51,8 +51,8 @@ header {
     flex-direction: column;
     justify-content: center; /* Center content vertically within header */
     align-items: flex-start; /* Align items to the start (left) within header */
-    height: 50vh; /* Half of the viewport height */
-    margin-bottom: 20px;
+    height: 20vh; /* Half of the viewport height */
+    margin-bottom: 10px;
     width: 100%; /* Ensure the header takes full width */
     padding: 0 20px; /* Optional padding for spacing */
 }
