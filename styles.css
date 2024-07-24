@@ -77,6 +77,12 @@ body.index-page main h2 {
     margin-bottom: 5px; /* Close the gap between h2 and subsequent content */
 }
 
+body.index-page #epitch p {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
 /* General element styles */
 h1, h2, h3 {
     margin: 0;
