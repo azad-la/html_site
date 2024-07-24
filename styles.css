@@ -31,12 +31,33 @@ body.index-page {
     background-color: #57facc;
 }
 
+/* Responsive h1 styling for the index page */
+body.index-page h1 {
+    font-size: 2rem; /* Base size for h1 on index page */
+    font-weight: bold;
+    color: #333;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    body.index-page h1 {
+        font-size: 2.5rem; /* Larger font size for tablets */
+    }
+}
+
+@media (min-width: 1024px) {
+    body.index-page h1 {
+        font-size: 3rem; /* Even larger font size for desktops */
+    }
+}
+
 /* Specific styles for the about page */
 body.portfolio-page {
     background-color: #ffffff;
 }
 
-/* Other styles remain unchanged */
+/* General element styles */
 header {
     margin-bottom: 20px;
 }
