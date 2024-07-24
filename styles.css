@@ -40,56 +40,46 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; /* Align to start for text alignment */
-    text-align: left;
-    padding: 0; /* Ensure no padding */
-    margin: 0; /* Ensure no margin */
-}
-
-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
-    height: auto; /* Let height be determined by content */
-    margin-bottom: 0; /* Remove margin */
-    padding-bottom: 0; /* Ensure no padding */
-    width: 100%;
-    padding: 0 20px;
+    text-align: left;
+    padding: 0;
+    margin: 0;
 }
 
-header h1 {
-    font-size: 22rem; /* Adjust size as needed */
+/* Index page main h1 styling */
+body.index-page main h1 {
+    font-size: 7rem; /* Adjust size as needed */
     font-weight: 800;
     color: #ffffff;
     line-height: 1.2;
-    margin-top: 60; 
+    margin: 0 0 10px 0; /* Close the gap between h1 and h2 */
+    padding: 0; /* Ensure no padding */
 }
 
 @media (min-width: 768px) {
-    header h1 {
-        font-size: 5rem;
+    body.index-page main h1 {
+        font-size: 5rem; /* Adjust size for tablets */
     }
 }
 
 @media (min-width: 1024px) {
-    header h1 {
-        font-size: 6rem;
+    body.index-page main h1 {
+        font-size: 6rem; /* Adjust size for desktops */
     }
 }
 
-h2 {
-    margin: 0; /* Remove margin */
-    padding-top: 0; /* Remove padding */
-    padding-bottom: 0; /* Remove padding */
-    margin-top: 0; /* Ensure no margin at top */
-    margin-bottom: 5px; /* Minimal space below */
-    color: #ffffff; /* Assuming you want it to be white too */
+body.index-page main h2 {
+    margin: 0; /* Remove default margin */
+    padding-top: 0;
+    padding-bottom: 0;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 5px; /* Close the gap between h2 and subsequent content */
 }
 
-/* Other general styles */
+/* General element styles */
 h1, h2, h3 {
-    margin: 0; /* Reset margins */
+    margin: 0;
 }
 
 p {
