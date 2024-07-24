@@ -78,9 +78,9 @@ body.index-page main h2 {
 }
 
 body.index-page #epitch p {
-    font-size: 2.5rem;
+    /*font-size: 2.5rem;*/
     color: #ffffff;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
 }
 
 /* General element styles */
