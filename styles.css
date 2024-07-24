@@ -1,6 +1,6 @@
-/* Set base font size on the root element */
+/* Base styling */
 html {
-    font-size: 100%; /* Typically 16px */
+    font-size: 100%;
 }
 
 body {
@@ -40,59 +40,61 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align to start for text alignment */
     text-align: left;
+    padding: 0; /* Ensure no padding */
+    margin: 0; /* Ensure no margin */
 }
 
-/* Header styling for the index page */
 header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    height: 20vh;
-    margin-bottom: 5px; /* Reduced space below the header */
+    height: auto; /* Let height be determined by content */
+    margin-bottom: 0; /* Remove margin */
+    padding-bottom: 0; /* Ensure no padding */
     width: 100%;
     padding: 0 20px;
 }
 
 header h1 {
-    font-size: 12rem; /* Large font size for h1 */
+    font-size: 4rem; /* Adjust size as needed */
     font-weight: 800;
     color: #ffffff;
     line-height: 1.2;
-    margin: 0; /* Remove default margin */
+    margin: 0; /* Remove margin */
 }
 
 @media (min-width: 768px) {
     header h1 {
-        font-size: 2.5rem;
+        font-size: 5rem;
     }
 }
 
 @media (min-width: 1024px) {
     header h1 {
-        font-size: 3rem;
+        font-size: 6rem;
     }
 }
 
-/* Specific styles for the portfolio page */
-body.portfolio-page {
-    background-color: #ffffff;
+h2 {
+    margin: 0; /* Remove margin */
+    padding-top: 0; /* Remove padding */
+    padding-bottom: 0; /* Remove padding */
+    margin-top: 0; /* Ensure no margin at top */
+    margin-bottom: 5px; /* Minimal space below */
+    color: #ffffff; /* Assuming you want it to be white too */
 }
 
-/* General element styles */
-header {
-    margin-bottom: 5px; /* Reduced space below the header */
-}
-
-h2, h3 {
-    margin-top: 0; /* Remove top margin */
-    margin-bottom: 5px; /* Reduced space below headings */
+/* Other general styles */
+h1, h2, h3 {
+    margin: 0; /* Reset margins */
 }
 
 p {
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
+    padding: 0;
 }
 
 nav ul {
