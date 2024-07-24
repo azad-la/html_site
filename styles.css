@@ -11,6 +11,10 @@ body {
     background-color: #57facc;
     padding: 20px;
     font-size: 1rem; /* Base font size */
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Increase font size for larger screens */
@@ -28,27 +32,46 @@ body {
 
 /* Specific styles for the index page */
 body.index-page {
-    background-color: #1C9C6F;
+    background-color: #1C9C6F; /* Updated background color */
 }
 
-/* Responsive h1 styling for the index page */
-body.index-page h1 {
+/* Flexbox container for centering content on index page */
+main {
+    flex: 1; /* Takes up remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center text horizontally */
+}
+
+/* Header styling for the index page */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically within header */
+    align-items: center; /* Center content horizontally within header */
+    height: 50vh; /* Half of the viewport height */
+    margin-bottom: 20px;
+}
+
+header h1 {
     font-size: 7rem; /* Base size for h1 on index page */
     font-weight: 800; /* ExtraBold font weight */
     color: #ffffff; /* White color for h1 text */
     line-height: 1.2;
-    margin-bottom: 20px;
+    margin: 0; /* Remove default margin */
 }
 
 @media (min-width: 768px) {
-    body.index-page h1 {
-        font-size: 2.5rem; /* Larger font size for tablets */
+    header h1 {
+        font-size: 2.5rem; /* Adjusted font size for tablets */
     }
 }
 
 @media (min-width: 1024px) {
-    body.index-page h1 {
-        font-size: 3rem; /* Even larger font size for desktops */
+    header h1 {
+        font-size: 3rem; /* Adjusted font size for desktops */
     }
 }
 
