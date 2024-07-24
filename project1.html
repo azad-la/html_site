@@ -211,9 +211,46 @@
             <p>72% of rows, firmly beating our naive benchmark.</p>  
             <p>Of the 2,897 actual bookings, our model correctly identified 54% of them.</p>
             <img src="assets/images/ml - all models - f1 and scores - bar graph.PNG" alt="Description of the image">
+            <p>Our chosen random forest model has identified total_reviews as a key feature for identifying potential bookings. This feature was highlighted in our earlier analysis when we examined properties with no previous bookings in the current dataset. </p>
+            <P>We still don’t know if this is self selecting, but would recommend that Airbnb further investigate the relationship between bookings and non-bookings with the count of reviews.</P> 
+            <img src="assets/images/ml - dt - feature importance.PNG" alt="Description of the image">
+            <P>We can see that guests from Brazil are a common feature in bookings, as is travel in August (as per our EDA), and somewhat surprisingly, profile wordsappears quite high.  This strikes me as self-selecting - clearly profile words on their own do not increase booking propensity but guests hoping to be accepted may be more likely to complete their profile.</P>
+            <P>Finally, we can see that guest_type_new figures quite highly.  This suggests that we should do more to encourage repeat visits, perhaps through email campaigns</P>
+            Your submission includes a conclusion that summarises the work you have done and two recommendations for next steps.      
         </section>
         <hr>    
         <section id="conclusion">
+            <h2>Conclusion</h2>
+            <P>I have completed the analysis of the 3 x Airbnb datasets.</P>  
+            <p></p>The data was initially examined for data quality issues and cleaning techniques employed where necessary.</p>
+            <p>The datasets were combined with univariate analysis run to gain some insight into the shape of the data.</p>
+            <p>Exploratory data analysis was run to look at how different features of the dataset related and to see surface any insights that might be helpful.</p>
+            <p>This was also an opportunity to understand which features might be pertinent to our machine learning analysis.</p>
+            <p>Finally we ran our machine learning classification models and compared the performance of the three.</p>
+            <p><strong>The key metrics for Airbnb to monitor over time should be:</strong></p>
+            <ul>
+                <li>The query to booking rate.  Use this as a threshold.  If the rate falls below this threshold for a prolonged period, this is a cause for concern.  Additionally a count of queries per month is necessary to provide contact to the booking rate as a fall in queries could lead to an increase in conversion without there actually being an increase in bookings.</li>
+                <li>The book_it fail rate.  This should be kept to a minimum as these are customers who want to book</li>
+                <li>Occupancy rate.  This allows Airbnb to understand how well they are matching demand to supply.  This can be viewed at a neighborhood, room type or individual property level <strong>(see appendix 2)</strong></li>
+            </ul> 
+            <p><strong>To increase the number of successful bookings, Airbnb, should:</strong></p>
+            <ul>
+                <li>Focus on the failed book_it events initially.  Using wider data and contacts, will provide greater understanding of these events</li>
+                <li>Seek to understand the content of enquiries particularly from larger groups to see if expanded property information can increase the propensity of bookings.  Suggest running A/B tests with different content based on party size to accurately assess this</li>
+                <li>Develop a post travel customer relationship email programme to solicit property reviews from guests and to maintain engagement with a view to increasing repeat bookings</li>
+                <li>Concentrate marketing budget on the first half of the year to put Airbnb front and centre in the minds of travellers</li>
+                <li>Run A/B tests with messaging to encourage early booking of the most popular properties, particularly if travelling in August</li>
+            </ul> 
+            <p><strong>Further recommendations include:</strong></p>
+            <ol>
+                <li>Extending the scope of this analysis to include further datasets.  In particular:</li>
+                    <ul>
+                        <li>Ecommerce data that provides insight on how these properties are presented and viewed on the web/app might provide helpful insight to the overbooking issue.</li>
+                        <li>Extended property data can provide insight on how important facilities and local amenities are, this would be particularly insightful when splitting the data on party size.</li>
+                        <li>Pricing data will provide valuable insight into how cost affects decision making and will allow the contracting team to better match supply & demand</li>
+                    </ul>
+                <li>In the absence of existing, running A/B tests can provide very specific answers.  Tests might include changing property details, the arrangement of information, the order in which a property appears in a list and experimental urgency messaging</li>
+            </ol>
         </section>
         <hr>
         <section id="appendices">
