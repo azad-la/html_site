@@ -59,11 +59,11 @@ header {
 }
 
 header h1 {
-    font-size: 24rem; /* Adjust size as needed */
+    font-size: 22rem; /* Adjust size as needed */
     font-weight: 800;
     color: #ffffff;
     line-height: 1.2;
-    margin-top: 20; /* Remove margin */
+    margin-top: 60; 
 }
 
 @media (min-width: 768px) {
