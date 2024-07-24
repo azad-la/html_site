@@ -81,7 +81,7 @@ body.index-page #epitch p {
 
 /* General element styles */
 h1, h2, h3 {
-    color: #ffffff
+    color: #ffffff;
     margin: 0; /* Reset margin for headings */
 }
 
