@@ -30,11 +30,11 @@ body {
     }
 }
 
+/* Specific styles for the index page */
 body.index-page {
     background-color: #1C9C6F; /* Green background */
     color: #ffffff; /* White text color */
 }
-
 
 body.index-page main h1 {
     font-size: 7rem; /* Main heading size */
@@ -82,7 +82,15 @@ body.project-page nav li {
     color: #000000; /* Black color for headings, text, links, and navigation */
 }
 
+/* Specific HR styles for different pages */
+body.index-page hr, 
+body.about-page hr {
+    border-color: #ffffff; /* White hr lines */
+}
 
+body.project-page hr {
+    border-color: #000000; /* Black hr lines on project page */
+}
 
 main {
     flex: 1;
