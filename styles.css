@@ -112,7 +112,7 @@ section {
 /* Link styles */
 a {
     text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit color from parent */
+    color: #000000;
 }
 
 a:link,
