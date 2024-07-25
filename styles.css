@@ -167,6 +167,7 @@ table {
             margin: 20px auto; /* Center the table horizontally */
             border-collapse: collapse; /* Remove spacing between table cells */
             font-size: 0.9rem; /* Decrease font size */
+            margin-left: 0; /* Ensure left alignment */
         }
         th, td {
             border: 1px solid #ddd;
