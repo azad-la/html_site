@@ -68,7 +68,7 @@ body.index-page #epitch p {
 }
 
 /* Specific styles for the project1 page */
-body.project1-page {
+body.project-page {
     background-color: #ffffff; /* White background */
     color: #000000; /* Black text */
 }
