@@ -223,9 +223,9 @@
         </section>
         <hr>
         <section id="results">    
-            <h2>Machine Learning</h2>
-            <p>For classification models the naive benchmark is the majority class, meaning that all rows would be classified as non-bookings giving us an accuracy score of 58%</p>
-            <p>We ran 3 models as with our earlier ‘overbooking’ analysis.  These were, single decision tree, tree ensemble (random forest) and XG Boosted model.</p>
+            <h2>Results</h2>
+            <p>For classification models the naive benchmark is the majority class, meaning that all rows would be classified as non-bookings giving an accuracy score of 58%</p>
+            <p>Three models were built with performance compared and assessed using the F1 score.  These were, single decision tree, tree ensemble (random forest) and XG Boosted model.</p>
             <p>The confusion matrices for each of our 3 models are shown.</p> 
             <br>
             <p>True Positive (lower right)</p>
@@ -233,28 +233,30 @@
             <p>True Negative (upper left)</p>
             <p>False Negative (lower left)</p>
             <br>
-            <p>We are most interested in the model that can correctly identify our bookings with as few misidentifications as possible. We an see that the XGBoost model was able to accurately identify the  most actual bookings (1610). However the XGBoost model also made the most False Positive errors.</p> 
+            <p>For this analysis most importance was placed on the model that could correctly identify bookings with as few misidentifications as possible.</p>
+            <p>The XGBoost model was able to accurately identify the most actual bookings (1610). However the XGBoost model also made the most False Positive errors.</p> 
             <img src="assets/images/ml - all models - confusion.PNG" alt="Description of the image">
-            <p>Comparing performance scores, we can see that the results are very close.  Given that we are most interested in identifying bookings and doing so correctly, I would recommend using the Random Forest model since it has the highest precision score, remember that high precision indicates that when the model predicts a positive result, it is likely to be correct.</p>
-            <p>If we look back to our confusion matrix we have:</p>
-            <p>Correctly identified non-bookings = 3,447</p>
-            <p>Correctly identified bookings = 1,569</p>
-            <p>So from a total of 6,972 rows in our test set, our model correctly identified</p>
-            <p>72% of rows, firmly beating our naive benchmark.</p>  
-            <p>Of the 2,897 actual bookings, our model correctly identified 54% of them.</p>
+            <p class = "figure">Figure 5.1 Comparing confusion matrices for classification models.</p>
+            <p>The results are very close.  Given that most importance is placed on identifying bookings and doing so correctly, the recommendation would be to select the Random Forest model since it has the highest precision score, remember that high precision indicates that when the model predicts a positive result, it is likely to be correct.</p>
+            <p>From the confusion matrix:</p>
+            <p><strong>Correctly identified non-bookings = 3,447</strong></p>
+            <p><strong>Correctly identified bookings = 1,569</strong></p>
+            <p>So from a total of 6,972 rows, the selected model correctly identified 72% of rows, firmly beating the naive benchmark.</p>  
+            <p>Of the 2,897 actual bookings, the random forest model correctly identified 54% of them.</p>
             <img src="assets/images/ml - all models - f1 and scores - bar graph.PNG" alt="Description of the image">
+            <p class = "figure">Figure 5.1 Comparing confusion matrices for classification models.</p>
             <p>Our chosen random forest model has identified total_reviews as a key feature for identifying potential bookings. This feature was highlighted in our earlier analysis when we examined properties with no previous bookings in the current dataset. </p>
-            <P>We still don’t know if this is self selecting, but would recommend that Airbnb further investigate the relationship between bookings and non-bookings with the count of reviews.</P> 
-            <img src="assets/images/ml - dt - feature importance.PNG" alt="Description of the image">
-            <P>We can see that guests from Brazil are a common feature in bookings, as is travel in August (as per our EDA), and somewhat surprisingly, profile wordsappears quite high.  This strikes me as self-selecting - clearly profile words on their own do not increase booking propensity but guests hoping to be accepted may be more likely to complete their profile.</P>
-            <P>Finally, we can see that guest_type_new figures quite highly.  This suggests that we should do more to encourage repeat visits, perhaps through email campaigns</P>
-            Your submission includes a conclusion that summarises the work you have done and two recommendations for next steps.      
+            <P>We still don’t know if this is self selecting, but would recommend that Airbnb further investigate the relationship between bookings and non-bookings with the count of reviews.</p> 
+            <img src="assets/images/ml - dt - feature importance.PNG" alt="Top 20 most important features of random forest model">
+            <p class = "figure">Figure 5.1 Comparing confusion matrices for classification models.</p>
+            <P>The most importance features graph reveals what the model found to be the most influencing component features of a successful booking.  Brazil as the guest country of origin is high, so Airbnb should be focusing the majority of the marketing budget on the domestic market.</p>  
+            <p>Not surprisingly travel in August is considered important (as per our EDA), but what is more surprising is that profile wordsappears quite high.  This could be self-selecting; clearly profile words on their own do not increase booking propensity but guests hoping to be accepted by a host may be more likely to complete their profile.</p>
+            <P>Finally, we can see that guest_type_new figures quite highly.  This suggests that we should do more to encourage repeat visits, perhaps through email campaigns</P>     
         </section>
         <hr>    
         <section id="conclusion">
-            <h2>Conclusion</h2>
-            <P>I have completed the analysis of the 3 x Airbnb datasets.</P>  
-            <p></p>The data was initially examined for data quality issues and cleaning techniques employed where necessary.</p>
+            <h3>Conclusion</h3> 
+            <p>The data was initially examined for data quality issues and cleaning techniques employed where necessary.</p>
             <p>The datasets were combined with univariate analysis run to gain some insight into the shape of the data.</p>
             <p>Exploratory data analysis was run to look at how different features of the dataset related and to see surface any insights that might be helpful.</p>
             <p>This was also an opportunity to understand which features might be pertinent to our machine learning analysis.</p>
