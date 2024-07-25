@@ -54,13 +54,16 @@ body.about-page {
     color: #ffffff; /* White text color */
 }
 
+body.about-page p,
+body.about-page nav ul, 
+body.about-page nav li {
+    color: #000000;
+}
+
 body.about-page h1, 
 body.about-page h2, 
 body.about-page h3, 
-body.about-page p, 
-body.about-page a, 
-body.about-page nav ul, 
-body.about-page nav li {
+body.about-page a {
     color: #ffffff; /* White color for headings, text, links, and navigation */
 }
 
