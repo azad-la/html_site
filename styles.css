@@ -119,3 +119,22 @@ a:hover,
 a:active {
     color: inherit; /* Prevent color change on hover and active states */
 }
+
+/* Responsive images */
+img {
+    max-width: 100%; /* Ensure images don't exceed the container width */
+    height: auto;   /* Maintain aspect ratio */
+}
+
+/* Adjust image sizing for larger screens */
+@media (min-width: 768px) {
+    img {
+        max-width: 80%; /* Slightly smaller images for medium screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    img {
+        max-width: 60%; /* Smaller images for large screens */
+    }
+}
