@@ -138,21 +138,21 @@
             <h2>4 - Exploratory Data Analysis</h2>
                 <p>The data consisted of three possible outcomes; contact_me, book_it, instant_book. Instant_book is the most valuable event since it is an instant confirmation with no reponse required by the host. 24% of all queries resulted in an instant_book.</p>
                 <img src="assets/images/eda - query type proportions.PNG" alt="Total proportion of each enquiry outcome in the data">
-                <p class = "figure">Figure 3.1 Split of event type in the query data.</p>
+                <p class = "figure"><strong>Figure 3.1</strong> Split of event type in the query data</p>
                 <p>Group size seems to affect have a strong effect on all queries, with a party size of two the most popular.  When the group size is 4 people there is a distinct increase in the discrepancy between number of queries and number of bookings, in favour of queries, that suggests there might be difficulty for groups of 4 trying to book.</p>
                 <img src="assets/images/eda - queries and bookings by party size.PNG" alt="Queries and bookings by party size">
-                <p class = "figure">Figure 3.2 TBC.</p>
+                <p class = "figure"><strong>Figure 3.2</strong> Queries and bookings by party size</p>
                 <p>However, when booking types are combined, queries for 4 people appear to be closely matched by bookings.  Booking events for parties of 2 far outstrip the number of contact_me events suggesting less difficulty booking or perhaps greater supply of rental properties. Contact_me events for 6 people outstrips the number of queries suggesting more difficulting in closing bookings for parties of this size.</p>
                 <p><strong>Take-Away</strong>Conduct sentiment analysis of enquiries if data, potentially using a word cloud to highlight sticking points particularly for larger parties.</p>
                 <img src="assets/images/eda - queries and combined bookings by party size.PNG" alt="Queries and combined booking events by party size">
-                <p class = "figure">Figure 3.3 TBC.</p>
+                <p class = "figure"><strong>Figure 3.3</strong>Queries and combined booking events by party size</p>
                 <p>Despite 30% of all enquires resulting in a book_it event, more than half (52%) did not result in actual bookings, defined by the presence of a booking timestamp.</p>  
                 <p>In the context of the journey outlined in the introduction these events should be treated like gold dust by Airbnb as they signify 'primed' guests: those that are ready to make a booking, but something, presumably out of their control, has blocked this.</p>. 
                 <p>A new feature binary variable was created and added to the dataset to easily identify these enquires. Further examination of this subset of the data was carried out using machine learning classification models but no specific patterns were found that could provide further insight</p>  
                 <p><strong>Take-Away</strong>Further analysis of guests with an ‘overbooking’ value of 1 should be conducted, preferably along with sentiment analysis of queries to understand sticking points, but also in conjunction with a wider range of datasets, particularly around browsing behaviour (such as google analytics)</p>
                 <p>Returning to the main data, a subset was created looking at the properties that had yet to receive a booking for the period covered:</p>  
-                <img src="assets/images/eda - properties with no bookings.PNG" alt="Description of the image">
-                <p class = "figure">Figure 3.4 TBC.</p>
+                <img src="assets/images/eda - properties with no bookings.PNG" alt="Properties with no bookings">
+                <p class = "figure"><strong>Table 3.4</strong> Properties with no bookings</p>
                 <p>This revealed that the feature 'Count of reviews' could be a strong influence in a whether a guest decides to book.  The Number of reviews for properties with no rentals for this period vs all rentals were as follows:</p>
                 <p><strong>Properties with no rental		0.4</strong></p>
                 <p><strong>All Properties				    7.2</strong></p>
