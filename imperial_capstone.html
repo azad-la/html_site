@@ -64,7 +64,7 @@
             <h3>1.2 Problem</h3>        
                 <p>What key metrics should be monitored over time, to measure the success of the team's efforts in improving the guest host matching process and why?</p>
                 <p>What areas should be invested in to increase the number of successful bookings in Rio de Janeiro?
-                <p>Thinking beyond the data provided.  What other research, experiments, or approaches could help the company get more clarity on the problem?</p>
+                <p>What other research, experiments, or approaches could help the company get more clarity on the problem?</p>
             <h3>1.3 Process</h3>
                 <ol>
                     <li>Import of business data, supplied by Airbnb</li>
@@ -142,13 +142,20 @@
                 <li><strong>Booking</strong> - binary value, 1  = booking timestamp (‘ts_booking_at’) present</li>
             </ul>
         <h3>3.2 Machine Learning Prep</h3>
-            <p>There were many features in the dataset with the potential to interact with each other resulting in hidden patterns that work together to influence bookings. 
-            <img src="assets/images/ml - dataset - numerical - correlations.PNG" alt="Description of the image">
-            <br>The only way to realistically address all of these is to employ machine learning and use computationally intensive methods to find patterns in the data.<br>Having been unsuccessful in identifying patterns inherent in failed book_it events, I looked to machine learning algorithms again to see if we could successfully predict whether a query will convert to a booking.  By unpicking this we might be able to find common factors that will help inform Airbnb’s marketing, merchandising (ecommerce) and supply chain strategies.
-            <br>The first step was to define our problem.
-            <br><strong>‘Can we predict whether a query will result in a booking using patterns found in previous rental enquiries?’</strong></p>
-            <p>The second step was to refine our dataset. I looked at whether any values were strongly correlated with our target variable.  The image on the right shows correlations for numerical values in the dataset, however it turned out that quite a few categorical values were highly correlated.  I removed any that would <br>only be populated in the event of a booking since these would bias the results. </p>
-            <p>Bookings were defined as an enquiry with a booking timestamp.<br>Our target variable was the column ‘booking’ which was a binary value; <br>where 1 = booking, 2 = non-booking</p>
+            <p>There were many features in the dataset that were potentially interacting and creating hidden patterns that directly influenced whether a guest query would result in a booking.</p>
+            <p>Exploring these manually is time-consuming and does not uncover the nuances in these patterns.</p>
+            <p>Machine Learning provides various models to find these patterns amongst the noise.</p>
+            <p>For datasets with a small number of features, a simple regression may suffice providing a linear relationship which describes the pattern well, e.g y = mx + b</p>
+            <p>In datasets with more features, a non-linear relationship might describe the pattern better.</p>
+            <p>Since a key objective of this report was to predict was whether a query would convert to a booking, in was imperative to find the most influential features to report to Airbnb and also to be able to build a model which could be used to predict whether a query would result in a booking</p>
+            <p>Understanding this, would enable Airbnb to focus their priorities.</p>
+            <p>Bookings were defined as an enquiry with a booking timestamp.</p>
+            <p>The target variable was the column named ‘booking’ which was created from the 'ts_booking_at' timestamp.  It was a binary value, where booking = 1, non-booking = 0</p>
+            <p>Since the target was a binary value, this framed the analysis as a classification problem.</p>    
+            <p>Predictor variables (features) that were were strongly correlated with the target were removed.  These would bias the results since the model would place greater emphasis on the inclusion of these features</p>
+            <p>Strong correlations indicate that the feature is already inherently linked to the outcome (successful booking), e.g it only appears when booking = 1</p>
+            <img src="assets/images/ml - dataset - numerical - correlations.PNG" alt="Correlation plot for numerical features">
+            <p class = figure>Figure 3.1 Looking for correlations in numerical features.</p>
         <h3>3.3 Machine Learning Assessment</h3>
             <p>In order to be able to assess our model we will first set a naive benchmark for accuracy, which for classification models is the majority class.  That is to say that if we just guessed whether an enquiry would lead to a booking based on the results of other rows, then we would guess that it is not a booking since 58% of all enquiries did not result in bookings </p>
             <p>The confusion matrix consists of 4 quadrants:</p>
