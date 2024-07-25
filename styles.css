@@ -163,7 +163,7 @@ img {
     }
 }
 table {
-            width: 80%; /* Set table width to 80% of the container */
+            width: 50%; /* Set table width to 80% of the container */
             margin: 20px auto; /* Center the table horizontally */
             border-collapse: collapse; /* Remove spacing between table cells */
             font-size: 0.9rem; /* Decrease font size */
