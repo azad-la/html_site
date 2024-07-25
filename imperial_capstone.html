@@ -137,15 +137,15 @@
             <h2>4 - Exploratory Data Analysis</h2>
                 <p>The data consisted of three possible outcomes; contact_me, book_it, instant_book. Instant_book is the most valuable event since it is an instant confirmation with no reponse required by the host. 24% of all queries resulted in an instant_book.</p>
                 <img src="assets/images/eda - query type proportions.PNG" alt="Total proportion of each enquiry outcome in the data">
-                <p class = "figure"><strong>Figure 3.1</strong> - Split of event type in the query data</p>
+                <p class = "figure"><strong>Figure 4.1</strong> - Split of event type in the query data</p>
                 <p>Group size seems to affect have a strong effect on all queries, with a party size of two the most popular.  When the group size is 4 people there is a distinct increase in the discrepancy between number of queries and number of bookings, in favour of queries, that suggests there might be difficulty for groups of 4 trying to book.</p>
                 <img src="assets/images/eda - queries and bookings by party size.PNG" alt="Queries and bookings by party size">
-                <p class = "figure"><strong>Figure 3.2</strong> - Queries and bookings by party size</p>
+                <p class = "figure"><strong>Figure 4.2</strong> - Queries and bookings by party size</p>
                 <p>However, when booking types are combined, queries for 4 people appear to be closely matched by bookings.  Booking events for parties of 2 far outstrip the number of contact_me events suggesting less difficulty booking or perhaps greater supply of rental properties. Contact_me events for 6 people outstrips the number of queries suggesting more difficulting in closing bookings for parties of this size.</p>
                 <p><strong>Take-Away</strong></p>
                 <p>Conduct sentiment analysis of enquiries if data, potentially using a word cloud to highlight sticking points particularly for larger parties.</p>
                 <img src="assets/images/eda - queries and combined bookings by party size.PNG" alt="Queries and combined booking events by party size">
-                <p class = "figure"><strong>Figure 3.3</strong> - Queries and combined booking events by party size</p>
+                <p class = "figure"><strong>Figure 4.3</strong> - Queries and combined booking events by party size</p>
                 <p>Despite 30% of all enquires resulting in a book_it event, more than half (52%) did not result in actual bookings, defined by the presence of a booking timestamp.</p>  
                 <p>In the context of the journey outlined in the introduction these events should be treated like gold dust by Airbnb as they signify 'primed' guests: those that are ready to make a booking, but something, presumably out of their control, has blocked this.</p>. 
                 <p>A new feature binary variable was created and added to the dataset to easily identify these enquires. Further examination of this subset of the data was carried out using machine learning classification models but no specific patterns were found that could provide further insight</p>  
@@ -153,9 +153,10 @@
                 <p><Further analysis of guests with an ‘overbooking’ value of 1 should be conducted, preferably along with sentiment analysis of queries to understand sticking points, but also in conjunction with a wider range of datasets, particularly around browsing behaviour (such as google analytics)</p>
                 <p>Returning to the main data, a subset was created looking at the properties that had yet to receive a booking for the period covered:</p>  
                 <img src="assets/images/eda - properties with no bookings.PNG" alt="Properties with no bookings">
-                <p class = "figure"><strong>Table 3.4</strong> - Properties with no bookings</p>
+                <p class = "figure"><strong>Table 4.4</strong> - Properties with no bookings</p>
                 <p>This revealed that the feature 'Count of reviews' could be a strong influence in a whether a guest decides to book.  The Number of reviews for properties with no rentals for this period vs all rentals were as follows:</p>
-                <table>
+                <br>
+                    <table>
                     <thead>
                         <tr>
                             <th>Description</th>
@@ -173,6 +174,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <br>    
                 <p>A two sample T-Test was run on the results which confirmed that there was a significant difference between the two means of the datasets to the 99% confidence level. However, clearly this is mostly likely a case a self-selection bias.</p>
                 <p>If no bookings had been made, then the expected number of reviews would be around zero. However, it is well-documented that reviews can play a significant role in influencing purchasing outcomes: <i>"A positively framed set of reviews together with the inclusion of ratings resulted in significantly higher levels of booking intentions and trust in the target hotel"</i> (Sparks & Browning 2011 pg29)</p> 
                 <p><strong>Take-Away</strong></p>
@@ -183,10 +185,10 @@
                 <br>
                 <p>There was a quite astonishing result when looking at guest booking periods.  It seems that the first contact occurs only in the first 6 months of the year. The data was checked thoroughly during the inspection and cleaning phase, so this should be a true pattern in the data, however it is advisable to check again before drawing firm conclusions since it seems very 'neat'.</p>
                 <img src="assets/images/eda - booking period.PNG" alt="Guests only make bookings in the first 6 months of the year">
-                <p class = "figure"><strong>Figure 3.5</strong> - First contact with host by month</p>  
+                <p class = "figure"><strong>Figure 4.5</strong> - First contact with host by month</p>  
                 <p>By contrast, August is by far the most popular month for travel.</p>
                 <img src="assets/images/eda - travel by month.PNG" alt="Most popular travel months">
-                <p class = "figure"><strong>Figure 3.6</strong> - Most popular travel months</p>
+                <p class = "figure"><strong>Figure 4.6</strong> - Most popular travel months</p>
                 <p><strong>Take-Away</strong></p>
                 <p>Cross-verify first contact data with other data sources, and compare to more recent datasets.</p>
                 <p>If the data is reliable, then Airbnb should seek to focus their marketing efforts only in the period leading up to January and decrease through the first 6 months of the year.</p>
@@ -195,11 +197,11 @@
         <hr>
         <section id = "modelling">
             <h2>5 - Modelling</h2>
-                <h3>4.1 Model Prep</h3>
+                <h3>5.1 Model Prep</h3>
                     <p>There were many features in the dataset that were potentially interacting and creating hidden patterns that directly influenced whether a guest query would result in a booking.</p>
                     <p>Exploring these manually is time-consuming and does not uncover the nuances in these patterns.</p>
                     <p>Machine Learning provides various models to find these patterns amongst the noise.</p>
-                    <p>For datasets with a small number of features, a simple regression may suffice providing a linear relationship which describes the pattern well, e.g y = mx + b</p>
+                    <p>For datasets with a small number of features, a simple regression may suffice providing a linear relationship which describes the pattern well, e.g <i>y = mx + b</i></p>
                     <p>In datasets with more features, a non-linear relationship might describe the pattern better.</p>
                     <p>Since a key objective of this report was to predict was whether a query would convert to a booking, in was imperative to find the most influential features to report to Airbnb and also to be able to build a model which could be used to predict whether a query would result in a booking</p>
                     <p>Understanding this, would enable Airbnb to focus their priorities.</p>
@@ -209,11 +211,12 @@
                     <p>Since the target was a binary value, this framed the analysis as a classification problem.</p>    
                     <p>Predictor variables (features) that were were strongly correlated with the target were removed.  These would bias the results since the model would place greater emphasis on the inclusion of these features</p>
                     <p>Strong correlations indicate that the feature is already inherently linked to the outcome (successful booking), e.g it only appears when booking = 1</p>
+                    <br>
                     <img src="assets/images/ml - dataset - numerical - correlations.PNG" alt="Correlation plot for numerical features">
-                    <p class = "figure"><strong>Figure 4.1</strong> - Correlation plot for numerical features.</p>
-                    <p>In figure 4.1, there is a strong correlation between our target variable, 'booking' and 'stay_duration'.  This is because stay_duration is a calculated variable taken from the check-in and check-out dates.  This would only be present for a booking, hence the strong correlation.  This and others were removed</p>
+                    <p class = "figure"><strong>Figure 5.1</strong> - Correlation plot for numerical features.</p>
+                    <p>In figure 5.1, there is a strong correlation between our target variable, 'booking' and 'stay_duration'.  This is because stay_duration is a calculated variable taken from the check-in and check-out dates.  This would only be present for a booking, hence the strong correlation.  This and others were removed</p>
                     <p>The final step of model prep involved the conversion of categorical values into new model features e.g where the column country had a value of UK, this became a column 'country-uk' and so on for guest country of origin.  This flattening of the data allows the model to assess the influence of each country.</p>
-                <h3>4.2 Model Assessment</h3>
+                <h3>5.2 Model Assessment</h3>
                     <p>To be able to assess a model it's important to have a benchmark for accuracy, which for classification models is the majority class, in this case the majority is not a booking since 58% of all enquiries did not result in bookings </p>
                     <p>The confusion matrix consists of 4 quadrants:</p>
                     <ul>
@@ -247,7 +250,7 @@
                 <p>For this analysis most importance was placed on the model that could correctly identify bookings with as few misidentifications as possible.</p>
                 <p>The XGBoost model was able to accurately identify the most actual bookings (1610). However the XGBoost model also made the most False Positive errors.</p> 
                 <img src="assets/images/ml - all models - confusion.PNG" alt="Description of the image">
-                <p class = "figure"><strong>Figure 5.1</strong> - Comparing confusion matrices for classification models.</p>
+                <p class = "figure"><strong>Figure 6.1</strong> - Comparing confusion matrices for classification models.</p>
                 <p>The results are very close.  Given that most importance is placed on identifying bookings and doing so correctly, the recommendation would be to select the Random Forest model since it has the highest precision score, remember that high precision indicates that when the model predicts a positive result, it is likely to be correct.</p>
                 <p>From the confusion matrix:</p>
                 <p><strong>Correctly identified non-bookings = 3,447</strong></p>
@@ -255,11 +258,11 @@
                 <p>So from a total of 6,972 rows, the selected model correctly identified 72% of rows, firmly beating the naive benchmark.</p>  
                 <p>Of the 2,897 actual bookings, the random forest model correctly identified 54% of them.</p>
                 <img src="assets/images/ml - all models - f1 and scores - bar graph.PNG" alt="Description of the image">
-                <p class = "figure"><strong>Figure 5.1</strong> - Comparing confusion matrices for classification models.</p>
+                <p class = "figure"><strong>Figure 6.2</strong> - Comparing confusion matrices for classification models.</p>
                 <p>Our chosen random forest model has identified total_reviews as a key feature for identifying potential bookings. This feature was highlighted in our earlier analysis when we examined properties with no previous bookings in the current dataset. </p>
                 <P>We still don’t know if this is self selecting, but would recommend that Airbnb further investigate the relationship between bookings and non-bookings with the count of reviews.</p> 
                 <img src="assets/images/ml - dt - feature importance.PNG" alt="Top 20 most important features of random forest model">
-                <p class = "figure"><strong>Figure 5.1</strong> - Comparing confusion matrices for classification models.</p>
+                <p class = "figure"><strong>Figure 6.3</strong> - Most important features of the random forest model.</p>
                 <P>The most importance features graph reveals what the model found to be the most influencing component features of a successful booking.  Brazil as the guest country of origin is high, so Airbnb should be focusing the majority of the marketing budget on the domestic market.</p>  
                 <p>Not surprisingly travel in August is considered important (as per our EDA), but what is more surprising is that profile_words appears quite high.  This could be self-selecting; clearly profile words on their own do not increase booking propensity but guests hoping to be accepted by a host may be more likely to complete their profile.</p>
                 <P>Finally, we can see that guest_type_new figures quite highly.  This suggests that we should do more to encourage repeat visits, perhaps through email campaigns</P>     
