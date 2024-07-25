@@ -89,7 +89,7 @@ body.about-page hr {
 }
 
 body.project-page hr {
-    border-color: #000000; /* Black hr lines on project page */
+    border-color: #000000 !important; /* Black hr lines on project page */
 }
 
 main {
