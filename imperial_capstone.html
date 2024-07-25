@@ -142,19 +142,37 @@
                 <img src="assets/images/eda - queries and bookings by party size.PNG" alt="Queries and bookings by party size">
                 <p class = "figure"><strong>Figure 3.2</strong> - Queries and bookings by party size</p>
                 <p>However, when booking types are combined, queries for 4 people appear to be closely matched by bookings.  Booking events for parties of 2 far outstrip the number of contact_me events suggesting less difficulty booking or perhaps greater supply of rental properties. Contact_me events for 6 people outstrips the number of queries suggesting more difficulting in closing bookings for parties of this size.</p>
-                <p><strong>Take-Away</strong>Conduct sentiment analysis of enquiries if data, potentially using a word cloud to highlight sticking points particularly for larger parties.</p>
+                <p><strong>Take-Away</strong></p>
+                <p>Conduct sentiment analysis of enquiries if data, potentially using a word cloud to highlight sticking points particularly for larger parties.</p>
                 <img src="assets/images/eda - queries and combined bookings by party size.PNG" alt="Queries and combined booking events by party size">
                 <p class = "figure"><strong>Figure 3.3</strong> - Queries and combined booking events by party size</p>
                 <p>Despite 30% of all enquires resulting in a book_it event, more than half (52%) did not result in actual bookings, defined by the presence of a booking timestamp.</p>  
                 <p>In the context of the journey outlined in the introduction these events should be treated like gold dust by Airbnb as they signify 'primed' guests: those that are ready to make a booking, but something, presumably out of their control, has blocked this.</p>. 
                 <p>A new feature binary variable was created and added to the dataset to easily identify these enquires. Further examination of this subset of the data was carried out using machine learning classification models but no specific patterns were found that could provide further insight</p>  
-                <p><strong>Take-Away</strong>Further analysis of guests with an ‘overbooking’ value of 1 should be conducted, preferably along with sentiment analysis of queries to understand sticking points, but also in conjunction with a wider range of datasets, particularly around browsing behaviour (such as google analytics)</p>
+                <p><strong>Take-Away</strong></p>
+                <p><Further analysis of guests with an ‘overbooking’ value of 1 should be conducted, preferably along with sentiment analysis of queries to understand sticking points, but also in conjunction with a wider range of datasets, particularly around browsing behaviour (such as google analytics)</p>
                 <p>Returning to the main data, a subset was created looking at the properties that had yet to receive a booking for the period covered:</p>  
                 <img src="assets/images/eda - properties with no bookings.PNG" alt="Properties with no bookings">
                 <p class = "figure"><strong>Table 3.4</strong> - Properties with no bookings</p>
                 <p>This revealed that the feature 'Count of reviews' could be a strong influence in a whether a guest decides to book.  The Number of reviews for properties with no rentals for this period vs all rentals were as follows:</p>
-                <p><strong>Properties with no rental		0.4</strong></p>
-                <p><strong>All Properties				    7.2</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Properties with no rental</td>
+                            <td>0.4</td>
+                        </tr>
+                        <tr>
+                            <td>All Properties</td>
+                            <td>7.2</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <p>A two sample T-Test was run on the results which confirmed that there was a significant difference between the two means of the datasets to the 99% confidence level. However, clearly this is mostly likely a case a self-selection bias.</p>
                 <p>If no bookings had been made, then the expected number of reviews would be around zero. However, it is well-documented that reviews can play a significant role in influencing purchasing outcomes: <i>"A positively framed set of reviews together with the inclusion of ratings resulted in significantly higher levels of booking intentions and trust in the target hotel"</i>(Sparks & Browning 2011 pg29)</p> 
                 <p><strong>Take-Away</strong></p>
