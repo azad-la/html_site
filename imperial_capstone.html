@@ -141,72 +141,76 @@
                 <li><strong>Overbooking</strong> - binary value, 1 = book_it events with no booking timestamp</li>
                 <li><strong>Booking</strong> - binary value, 1  = booking timestamp (‘ts_booking_at’) present</li>
             </ul>
-        <h3>3.2 Machine Learning Prep</h3>
-            <p>There were many features in the dataset that were potentially interacting and creating hidden patterns that directly influenced whether a guest query would result in a booking.</p>
-            <p>Exploring these manually is time-consuming and does not uncover the nuances in these patterns.</p>
-            <p>Machine Learning provides various models to find these patterns amongst the noise.</p>
-            <p>For datasets with a small number of features, a simple regression may suffice providing a linear relationship which describes the pattern well, e.g y = mx + b</p>
-            <p>In datasets with more features, a non-linear relationship might describe the pattern better.</p>
-            <p>Since a key objective of this report was to predict was whether a query would convert to a booking, in was imperative to find the most influential features to report to Airbnb and also to be able to build a model which could be used to predict whether a query would result in a booking</p>
-            <p>Understanding this, would enable Airbnb to focus their priorities.</p>
-            <p>Bookings were defined as an enquiry with a booking timestamp.</p>
-            <p>The target variable was the column named ‘booking’ which was created from the 'ts_booking_at' timestamp.  It was a binary value, where booking = 1, non-booking = 0</p>
-            <p>Since the target was a binary value, this framed the analysis as a classification problem.</p>    
-            <p>Predictor variables (features) that were were strongly correlated with the target were removed.  These would bias the results since the model would place greater emphasis on the inclusion of these features</p>
-            <p>Strong correlations indicate that the feature is already inherently linked to the outcome (successful booking), e.g it only appears when booking = 1</p>
-            <img src="assets/images/ml - dataset - numerical - correlations.PNG" alt="Correlation plot for numerical features">
-            <p class = figure>Figure 3.1 Looking for correlations in numerical features.</p>
-        <h3>3.3 Machine Learning Assessment</h3>
-            <p>In order to be able to assess our model we will first set a naive benchmark for accuracy, which for classification models is the majority class.  That is to say that if we just guessed whether an enquiry would lead to a booking based on the results of other rows, then we would guess that it is not a booking since 58% of all enquiries did not result in bookings </p>
-            <p>The confusion matrix consists of 4 quadrants:</p>
-            <ul>
-                <li>True Positives (TP) = instance where the actual value is 'booking' = 1 and the model predicted 'booking' = 1 </li>
-                <li>False Positives (FP) = instances where the actual value is 'booking' = 0 but the model predicted 'booking' = 1</li>
-                <li>True Negatives (TN) = instances where the actual value is 'booking' = 0 and the model predicted 'booking' = 0</li>
-                <li>False Negatives (FN) = instances where the actual value is 'booking' = 1 but the model predicted 'booking' = 0</li>
-            </ul>
-            <p><strong>Accuracy</strong> = The overall correctness of the model = TP+TN / TP+TN+FP+FN</p>
-            <p>This is important to ensure we have clear signals over what the data means and not draw false conclusions.  However if there is a class imbalance in our dataset the accuracy can be skewed</p>
-            <p><strong>Precision</strong> = Accuracy of positive predictions = TP / TP+FP</p>
-            <p>High precision indicates that when the model predicts a positive result, it is likely to be correct. Goal for this metric would be to get as few mistakes as possible when guessing positive labels (bookings)</p>
-            <p><strong>Recall/Sensitivity</strong> = Model's ability to capture all positive instances = TP / TP+FN</p>
-            <p>Measures the proportion of correctly predicted positive instances as a proportion of ACTUAL positive instances</p>
-            <p><strong>F1 Score</strong> = Maximise precision and recall = 2 x TP / 2 x TP+FP+FN</p>
-            <p>F1 is the harmonic mean and weights the score towards the lower of the two components scores essentially penalising precision and recall from disagreeing with each other too much and correctly reflects when either of them fall too close to the value of zero</p>
-            <p>F1 score is commonly used</p>
+        </section>
+        <section id="EDA Findings">
+            <h3>Exploratory Data Analysis</h3>
+                <p>The data consisted of three possible outcomes; contact_me, book_it, instant_book. Instant_book is the most valuable event since it is an instant confirmation with no reponse required by the host. 24% of all queries resulted in an instant_book.</p>
+                <img src="assets/images/eda - query type proportions.PNG" alt="Total proportion of each enquiry outcome in the data">
+                <p>Group size seems to affect have a strong effect on all queries, with a party size of two the most popular.  When the group size is 4 people there is a distinct increase in the discrepancy between number of queries and number of bookings, in favour of queries, that suggests there might be difficulty for groups of 4 trying to book.</p>
+                <img src="assets/images/eda - queries and bookings by party size.PNG" alt="Queries and bookings by party size">
+                <p>However, when booking types are combined, queries for 4 people appear to be closely matched by bookings.  Booking events for parties of 2 far outstrip the number of contact_me events suggesting less difficulty booking or perhaps greater supply of rental properties. Contact_me events for 6 people outstrips the number of queries suggesting more difficulting in closing bookings for parties of this size.</p>
+                <p><strong>Take-Away</strong>Seek to understand the content of enquiries, to see if expanded property information can increase the propensity of bookings for larger groups. Alternatively this might provide insight into supply & demand gaps.</p>
+                <img src="assets/images/eda - queries and combined bookings by party size.PNG" alt="Queries and combined booking events by party size">
+                <p>As I was examining the data in preparation for our machine learning models I noticed that 52% of all book_it events did not result in actual bookings, defined by the presence of a booking timestamp.  In the context of the journey that I mentioned in the introduction these events are like gold dust because they signify that these guests have taken all the necessary steps and are primed and ready to book. However something, presumably out of their control, has blocked this and by identifying these events and analysing their component features we might be able to glean valuable information on how Airbnb can easily increase bookings on their platform.  Should they limit their marketing to a particular time of year?  Should they try to increase bed capacity at certain times? Do they have enough properties in particular neighborhoods or for particular party sizes?  I created a new feature called ‘overbooking’ for these events and applied a decision tree model, a tree ensemble and a boosted model to the data to see if a pattern could be discerned.  Unfortunately, none of the models were able to accurately predict overbookings leading me to conclude that the answer is not in the supplied datasets.</p>
+                <p><strong>Take-Away</strong></p>
+                <p>I would therefore recommend further analysis of these events, either through analysing message content (including sentiment analysis) or by contacting hosts to understand these situations better.  The outcome may be able to inform the merchandising/ecommerce teams to encourage early booking for popular properties or to help Airbnb expand its supply of particular types of property that often overbooked.</p>
+                <a href="project1.html#appendix6"><strong>See Appendix 6 for link to Jupyter notebook</strong></a>
+                <p>My next stop was to investigate which properties had not yet received any queries since this might provide some insight into guest demand.  I created a new table and looked at some of the features of these properties.</p>
+                <p>What immediately stood out was the count of reviews.  Now, this may be a simple case of self-selection bias where we would expect the reviews to be about zero since no bookings have been made.  However, the date range on our dataset was limited to mostly 2016 and these properties could have been let at other times so we don’t want to disregard this out of hand. </p>
+                <img src="assets/images/eda - properties with no bookings.PNG" alt="Description of the image">
+                <p>I re-ran the analysis to find the average count of reviews for all properties and found:</p>
+                <p>Properties with no rental in 2016		0.4</p>
+                <p>All Properties				            7.2</p>
+                <p>Running a T-Test on the results confirmed that there is a significant difference between the two means of the datasets and we can be certain of this at the 99% confidence level.  Again we note that this may simply be a case of the metric being influenced by the very condition it seeks to measure.</p>
+                <p><strong>Take-Away</strong></p>
+                <p>Further analysis with wider date range required to understand how much of an impact property reviews have on bookings</p>
+                <p>Recommend A/B testing on website to accurately measure impact</p>
+                <p>Recommend further encouragement of guests to review properties after their checkout date</p>
+                <p>Finally, when I examined which month guests were making contact with hosts, I found this astonishing result. It seems that the first contact occurs only in the first 6 months of the year.</p>
+                <img src="assets/images/eda - booking period.PNG" alt="Description of the image">
+                <p>I suspect this result is due to missing data, since there appears to be an absence of it .  However, the dataset includes multiple years, so it should be reliable.  If this is true, then Airbnb should be focus their marketing efforts on this period.</p>
+                <p>By contrast, August is by far the most popular month for travel.</p>
+                <img src="assets/images/eda - travel by month.PNG" alt="Description of the image">
+                <p><strong>Take-Away</strong></p>
+                <p>Recommend focusing marketing budget in the first half of the year only, perhaps shifting forward one month ie. Dec - May (rather than Jan - Jun). Consider A/B tests encouraging guests to book early for travel in August to avoid being disappointed</p>
+        </section>
+        <section id = "Modelling">
+            <h3>3.2 Model Prep</h3>
+                <p>There were many features in the dataset that were potentially interacting and creating hidden patterns that directly influenced whether a guest query would result in a booking.</p>
+                <p>Exploring these manually is time-consuming and does not uncover the nuances in these patterns.</p>
+                <p>Machine Learning provides various models to find these patterns amongst the noise.</p>
+                <p>For datasets with a small number of features, a simple regression may suffice providing a linear relationship which describes the pattern well, e.g y = mx + b</p>
+                <p>In datasets with more features, a non-linear relationship might describe the pattern better.</p>
+                <p>Since a key objective of this report was to predict was whether a query would convert to a booking, in was imperative to find the most influential features to report to Airbnb and also to be able to build a model which could be used to predict whether a query would result in a booking</p>
+                <p>Understanding this, would enable Airbnb to focus their priorities.</p>
+                <p>Bookings were defined as an enquiry with a booking timestamp.</p>
+                <p>The target variable was the column named ‘booking’ which was created from the 'ts_booking_at' timestamp.  It was a binary value, where booking = 1, non-booking = 0</p>
+                <p>Since the target was a binary value, this framed the analysis as a classification problem.</p>    
+                <p>Predictor variables (features) that were were strongly correlated with the target were removed.  These would bias the results since the model would place greater emphasis on the inclusion of these features</p>
+                <p>Strong correlations indicate that the feature is already inherently linked to the outcome (successful booking), e.g it only appears when booking = 1</p>
+                <img src="assets/images/ml - dataset - numerical - correlations.PNG" alt="Correlation plot for numerical features">
+                <p class = figure>Figure 3.1 Looking for correlations in numerical features.</p>
+            <h3>3.3 Machine Learning Assessment</h3>
+                <p>In order to be able to assess our model we will first set a naive benchmark for accuracy, which for classification models is the majority class.  That is to say that if we just guessed whether an enquiry would lead to a booking based on the results of other rows, then we would guess that it is not a booking since 58% of all enquiries did not result in bookings </p>
+                <p>The confusion matrix consists of 4 quadrants:</p>
+                <ul>
+                    <li>True Positives (TP) = instance where the actual value is 'booking' = 1 and the model predicted 'booking' = 1 </li>
+                    <li>False Positives (FP) = instances where the actual value is 'booking' = 0 but the model predicted 'booking' = 1</li>
+                    <li>True Negatives (TN) = instances where the actual value is 'booking' = 0 and the model predicted 'booking' = 0</li>
+                    <li>False Negatives (FN) = instances where the actual value is 'booking' = 1 but the model predicted 'booking' = 0</li>
+                </ul>
+                <p><strong>Accuracy</strong> = The overall correctness of the model = TP+TN / TP+TN+FP+FN</p>
+                <p>This is important to ensure we have clear signals over what the data means and not draw false conclusions.  However if there is a class imbalance in our dataset the accuracy can be skewed</p>
+                <p><strong>Precision</strong> = Accuracy of positive predictions = TP / TP+FP</p>
+                <p>High precision indicates that when the model predicts a positive result, it is likely to be correct. Goal for this metric would be to get as few mistakes as possible when guessing positive labels (bookings)</p>
+                <p><strong>Recall/Sensitivity</strong> = Model's ability to capture all positive instances = TP / TP+FN</p>
+                <p>Measures the proportion of correctly predicted positive instances as a proportion of ACTUAL positive instances</p>
+                <p><strong>F1 Score</strong> = Maximise precision and recall = 2 x TP / 2 x TP+FP+FN</p>
+                <p>F1 is the harmonic mean and weights the score towards the lower of the two components scores essentially penalising precision and recall from disagreeing with each other too much and correctly reflects when either of them fall too close to the value of zero</p>
+                <p>F1 score is commonly used</p>
         </section>
         <hr>
-        <section id="results">
-            <h2>Exploratory Data Analysis</h2>
-            <p>I first split the data to categorise the rows by the type of enquiry. Instant_book is the event that Airbnb value the most since it does not require the host to confirm the booking</p>
-            <img src="assets/images/eda - query type proportions.PNG" alt="Description of the image">
-            <p>I then wanted to know how how this might change based on party size since this could provide insight into demand. When the group size is 4 people there is a distinct increase in the discrepancy between number of queries and number of bookings, in favour of queries, suggesting there might be difficulty for groups of 4 trying to book.</p>
-            <img src="assets/images/eda - queries and bookings by party size.PNG" alt="Description of the image">
-            <p>However, when we combine both booking types, we find that actually queries, appear to be well matched by bookings for 4 people.  It should be noted that contact_me events do still outnumber booking events for 4 people though.  By comparison, the number of bookings for 2 people, far outstrips the number of contact_me events suggesting that booking is 2 is either much easier or that there is a greater supply of rental properties. Contact_me events for 6 people also outstrips the number of queries suggesting more difficulting in closing bookings for parties of this size. </p>
-            <p><strong>Take-Away</strong> Seek to understand the content of enquiries, to see if expanded property information can increase the propensity of bookings for larger groups. Alternatively this might provide insight into supply & demand gaps.</p>
-            <img src="assets/images/eda - queries and combined bookings by party size.PNG" alt="Description of the image">
-            <p>As I was examining the data in preparation for our machine learning models I noticed that 52% of all book_it events did not result in actual bookings, defined by the presence of a booking timestamp.  In the context of the journey that I mentioned in the introduction these events are like gold dust because they signify that these guests have taken all the necessary steps and are primed and ready to book. However something, presumably out of their control, has blocked this and by identifying these events and analysing their component features we might be able to glean valuable information on how Airbnb can easily increase bookings on their platform.  Should they limit their marketing to a particular time of year?  Should they try to increase bed capacity at certain times? Do they have enough properties in particular neighborhoods or for particular party sizes?  I created a new feature called ‘overbooking’ for these events and applied a decision tree model, a tree ensemble and a boosted model to the data to see if a pattern could be discerned.  Unfortunately, none of the models were able to accurately predict overbookings leading me to conclude that the answer is not in the supplied datasets.</p>
-            <p><strong>Take-Away</strong></p>
-            <p>I would therefore recommend further analysis of these events, either through analysing message content (including sentiment analysis) or by contacting hosts to understand these situations better.  The outcome may be able to inform the merchandising/ecommerce teams to encourage early booking for popular properties or to help Airbnb expand its supply of particular types of property that often overbooked.</p>
-            <a href="project1.html#appendix6"><strong>See Appendix 6 for link to Jupyter notebook</strong></a>
-            <p>My next stop was to investigate which properties had not yet received any queries since this might provide some insight into guest demand.  I created a new table and looked at some of the features of these properties.</p>
-            <p>What immediately stood out was the count of reviews.  Now, this may be a simple case of self-selection bias where we would expect the reviews to be about zero since no bookings have been made.  However, the date range on our dataset was limited to mostly 2016 and these properties could have been let at other times so we don’t want to disregard this out of hand. </p>
-            <img src="assets/images/eda - properties with no bookings.PNG" alt="Description of the image">
-            <p>I re-ran the analysis to find the average count of reviews for all properties and found:</p>
-            <p>Properties with no rental in 2016		0.4</p>
-            <p>All Properties				            7.2</p>
-            <p>Running a T-Test on the results confirmed that there is a significant difference between the two means of the datasets and we can be certain of this at the 99% confidence level.  Again we note that this may simply be a case of the metric being influenced by the very condition it seeks to measure.</p>
-            <p><strong>Take-Away</strong></p>
-            <p>Further analysis with wider date range required to understand how much of an impact property reviews have on bookings</p>
-            <p>Recommend A/B testing on website to accurately measure impact</p>
-            <p>Recommend further encouragement of guests to review properties after their checkout date</p>
-            <p>Finally, when I examined which month guests were making contact with hosts, I found this astonishing result. It seems that the first contact occurs only in the first 6 months of the year.</p>
-            <img src="assets/images/eda - booking period.PNG" alt="Description of the image">
-            <p>I suspect this result is due to missing data, since there appears to be an absence of it .  However, the dataset includes multiple years, so it should be reliable.  If this is true, then Airbnb should be focus their marketing efforts on this period.</p>
-            <p>By contrast, August is by far the most popular month for travel.</p>
-            <img src="assets/images/eda - travel by month.PNG" alt="Description of the image">
-            <p><strong>Take-Away</strong></p>
-            <p>Recommend focusing marketing budget in the first half of the year only, perhaps shifting forward one month ie. Dec - May (rather than Jan - Jun). Consider A/B tests encouraging guests to book early for travel in August to avoid being disappointed</p>
+        <section id="results">    
             <h2>Machine Learning</h2>
             <p>For classification models the naive benchmark is the majority class, meaning that all rows would be classified as non-bookings giving us an accuracy score of 58%</p>
             <p>We ran 3 models as with our earlier ‘overbooking’ analysis.  These were, single decision tree, tree ensemble (random forest) and XG Boosted model.</p>
