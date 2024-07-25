@@ -30,7 +30,6 @@ body {
     }
 }
 
-/* Specific styles for the index page */
 body.index-page {
     background-color: #1C9C6F; /* Green background */
     color: #ffffff; /* White text color */
@@ -51,7 +50,20 @@ body.index-page #epitch p {
     color: #ffffff; /* White color for specific elements */
 }
 
-/* Specific styles for the project1 page */
+body.about-page {
+    color: #ffffff; /* White text color */
+}
+
+body.about-page h1, 
+body.about-page h2, 
+body.about-page h3, 
+body.about-page p, 
+body.about-page a, 
+body.about-page nav ul, 
+body.about-page nav li {
+    color: #ffffff; /* White color for headings, text, links, and navigation */
+}
+
 body.project-page {
     background-color: #ffffff; /* White background */
     color: #000000; /* Black text */
@@ -67,20 +79,7 @@ body.project-page nav li {
     color: #000000; /* Black color for headings, text, links, and navigation */
 }
 
-/* Specific styles for the about page */
-body.about-page {
-    color: #ffffff; /* White text color */
-}
 
-body.about-page h1, 
-body.about-page h2, 
-body.about-page h3, 
-body.about-page p, 
-body.about-page a, 
-body.about-page nav ul, 
-body.about-page nav li {
-    color: #ffffff; /* White color for headings, text, links, and navigation */
-}
 
 main {
     flex: 1;
