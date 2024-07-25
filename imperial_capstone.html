@@ -24,7 +24,7 @@
         <section id="project1">
             <h2>Predicting bookings from enquiry data for Airbnb</h2>
             <ol>
-                <li><a href="imperial_capstone.html#executive summary">Executive Summary</a></li>
+                <li><a href="imperial_capstone.html#executive summary">1 Executive Summary</a></li>
                     <ul>
                         <li><a href="imperial_capstone.html#executive summary">1.1 Objective</a></li>
                         <li><a href="imperial_capstone.html#executive summary">1.2 Problem</a></li>
@@ -32,19 +32,12 @@
                         <li><a href="imperial_capstone.html#executive summary">1.4 Key Findings</a></li>
                     </ul>
                 </li>
-                <li><a href="imperial_capstone.html#introduction">Introduction</a></li>
-                <li><a href="imperial_capstone.html#methods">Methods</a></li>
-                    <ul>
-                        <li><a href="imperial_capstone.html#methods"</a>3.1 Joining Data & Cleaning</li>
-                        <li><a href="imperial_capstone.html#methods"</a>3.2 Machine Learning Prep</li>
-                        <li><a href="imperial_capstone.html#methods"</a>3.3 Machine Learning Assessment</li>
-                    </ul>
-                <li><a href="imperial_capstone.html#results">Results</a></li>
-                     <ul>
-                        <li><a href="imperial_capstone.html#results"</a>4.1 EDA</li>
-                        <li><a href="imperial_capstone.html#results"</a>4.2 Machine Learning</li>
-                    </ul>
-                <li><a href="imperial_capstone.html#conclusion">Conclusion</a></li>
+                <li><a href="imperial_capstone.html#introduction">2 Introduction</a></li>
+                <li><a href="imperial_capstone.html#methods">3 Methods</a></li>
+                <li><a href="imperial_capstone.html#eda_findings">4 Exploratory Data Analysis</a></li>
+                <li><a href="imperial_capstone.html#modelling">5 Modelling</a></li>
+                <li><a href="imperial_capstone.html#results">6 Results</a></li>
+                <li><a href="imperial_capstone.html#conclusion">7 Conclusion</a></li>
                 <li><a href="imperial_capstone.html#appendices">Appendices</a></li>
                     <ul>
                         <li><a href="imperial_capstone.html#appendix1">Appendix 1 - Enquiries by neighborhood, room type and party size</a></li>
@@ -56,7 +49,7 @@
         </section>
         <hr>
         <section id="executive summary">
-            <h2>Executive Summary</h2>
+            <h2>1 - Executive Summary</h2>
             <h3>1.1 Objective</h3>
                 <p>The objective of this report is to answer the questions briefed by the Airbnb team in Rio.  The team were described as a non-technical audience so care was taken to explain the machine learning element</p>
             <h3>1.2 Problem</h3>        
@@ -81,7 +74,7 @@
         </section>
         <hr>
         <section id="introduction">
-            <h2>Introduction</h2>
+            <h2>2 - Introduction</h2>
             <p>Airbnb was founded by three friends in the summer of 2008 and emerged into an internet juggernaut transforming the way people book and rent travel accommodation.  The sure sign of any successful business is that the brand name evolves into a verb, and sure enough, ‘to Airbnb it’ can now refer to the renting or or hiring of homes or rooms, since Airbnb is two side marketplace. The Airbnb booking process is fairly simple; a guest finds an available room (listing) that they like, they then contact the host to ask further questions or to book.
                 <br>There are three ways to contact the host:</p>
                 <ol>
@@ -116,32 +109,32 @@
         </section>
         <hr>
         <section id="methods">
-        <h2>Methods</h2>
-        <h3>3.1 Joining Data & Cleaning</h3>
-        <p><strong>The supplied datasets were:</strong></p> 
-            <ol>
-                <li><strong>Contacts</strong> - 27,887 rows x 14 columns - featuring a row for every time that a user made an enquiry for a stay at a listing in Rio de Janeiro</li>
-                <li><strong>Listings</strong> - 13,038 rows x 4 columns - featuring data for every listing (property) on the market</li>
-                <li><strong>Contacts</strong> - 31,525 rows x 3 columns - featuring data for every user.  No personally Identifiable Information</li>
-            </ol>
-        <p><strong>Some data cleaning was required as follows:</strong></p>
-            <ul>
-                <li>Contacts - first interaction date was not in a date format as many rows had an addition dot zero attached</li>
-                <li>Listings - total_reviews had about 40 rows with negative counts.  These were made positive</li>
-                <li>Users - removed duplicate rows </li>
-                <li>Establish match between contacts [‘id_guest_anon’] and users [‘id_user_anon] for joining tables</li>
-                <li>All tables were joined using Pandas Merge.  The joined table is an extension of the contacts table,  so row is a guest enquiry but also contains details on the user and the property</li>
-            </ul>
-        <p><strong>New features created:</strong></p>
-            <ul>
-                <li><strong>Lead time</strong> - time in days from confirmed booking timestamp to check in date</li>
-                <li><strong>Acceptance time</strong> - time in hours from first interaction to acceptance time</li>
-                <li><strong>Overbooking</strong> - binary value, 1 = book_it events with no booking timestamp</li>
-                <li><strong>Booking</strong> - binary value, 1  = booking timestamp (‘ts_booking_at’) present</li>
-            </ul>
+        <h2>3 - Methods</h2>
+            <h3>3.1 Joining Data & Cleaning</h3>
+                <p><strong>The supplied datasets were:</strong></p> 
+                    <ol>
+                        <li><strong>Contacts</strong> - 27,887 rows x 14 columns - featuring a row for every time that a user made an enquiry for a stay at a listing in Rio de Janeiro</li>
+                        <li><strong>Listings</strong> - 13,038 rows x 4 columns - featuring data for every listing (property) on the market</li>
+                        <li><strong>Contacts</strong> - 31,525 rows x 3 columns - featuring data for every user.  No personally Identifiable Information</li>
+                    </ol>
+                <p><strong>Some data cleaning was required as follows:</strong></p>
+                    <ul>
+                        <li>Contacts - first interaction date was not in a date format as many rows had an addition dot zero attached</li>
+                        <li>Listings - total_reviews had about 40 rows with negative counts.  These were made positive</li>
+                        <li>Users - removed duplicate rows </li>
+                        <li>Establish match between contacts [‘id_guest_anon’] and users [‘id_user_anon] for joining tables</li>
+                        <li>All tables were joined using Pandas Merge.  The joined table is an extension of the contacts table,  so row is a guest enquiry but also contains details on the user and the property</li>
+                    </ul>
+                <p><strong>New features created:</strong></p>
+                    <ul>
+                        <li><strong>Lead time</strong> - time in days from confirmed booking timestamp to check in date</li>
+                        <li><strong>Acceptance time</strong> - time in hours from first interaction to acceptance time</li>
+                        <li><strong>Overbooking</strong> - binary value, 1 = book_it events with no booking timestamp</li>
+                        <li><strong>Booking</strong> - binary value, 1  = booking timestamp (‘ts_booking_at’) present</li>
+                    </ul>
         </section>
-        <section id="EDA Findings">
-            <h3>Exploratory Data Analysis</h3>
+        <section id="eda_findings">
+            <h2>4 - Exploratory Data Analysis</h2>
                 <p>The data consisted of three possible outcomes; contact_me, book_it, instant_book. Instant_book is the most valuable event since it is an instant confirmation with no reponse required by the host. 24% of all queries resulted in an instant_book.</p>
                 <img src="assets/images/eda - query type proportions.PNG" alt="Total proportion of each enquiry outcome in the data">
                 <p class = "figure">Figure 3.1 Split of event type in the query data.</p>
@@ -181,163 +174,163 @@
                 <p>If the data is reliable, then Airbnb should seek to focus their marketing efforts only in the period leading up to January and decrease through the first 6 months of the year.</p>
                 <p>Consider A/B testing to encourage guests to book early for travel in August to avoid being disappointed.  Consider also testing messaging to promote similar properties for peak periods.</p>
         </section>
-        <section id = "Modelling">
-            <h3>4.1 Model Prep</h3>
-                <p>There were many features in the dataset that were potentially interacting and creating hidden patterns that directly influenced whether a guest query would result in a booking.</p>
-                <p>Exploring these manually is time-consuming and does not uncover the nuances in these patterns.</p>
-                <p>Machine Learning provides various models to find these patterns amongst the noise.</p>
-                <p>For datasets with a small number of features, a simple regression may suffice providing a linear relationship which describes the pattern well, e.g y = mx + b</p>
-                <p>In datasets with more features, a non-linear relationship might describe the pattern better.</p>
-                <p>Since a key objective of this report was to predict was whether a query would convert to a booking, in was imperative to find the most influential features to report to Airbnb and also to be able to build a model which could be used to predict whether a query would result in a booking</p>
-                <p>Understanding this, would enable Airbnb to focus their priorities.</p>
-                <p>Bookings were defined as an enquiry with a booking timestamp.</p>
-                <p>The target variable was the column named ‘booking’ which was created from the 'ts_booking_at' timestamp.  It was a binary value, where booking = 1, non-booking = 0</p>
-                <p>In our final dataset, the proportion of bookings stood at 42% of all enquiries.  This is was a fairly even split meaning that we did not need to worry about class imbalance.  Class imbalance can cause bias in the a model due to the target variable appearing infrequently in the dataset</p>  
-                <p>Since the target was a binary value, this framed the analysis as a classification problem.</p>    
-                <p>Predictor variables (features) that were were strongly correlated with the target were removed.  These would bias the results since the model would place greater emphasis on the inclusion of these features</p>
-                <p>Strong correlations indicate that the feature is already inherently linked to the outcome (successful booking), e.g it only appears when booking = 1</p>
-                <img src="assets/images/ml - dataset - numerical - correlations.PNG" alt="Correlation plot for numerical features">
-                <p class = "figure">Figure 4.1 Looking for correlations in numerical features.</p>
-                <p>In figure 4.1, there is a strong correlation between our target variable, 'booking' and 'stay_duration'.  This is because stay_duration is a calculated variable taken from the check-in and check-out dates.  This would only be present for a booking, hence the strong correlation.  This and others were removed</p>
-                <p>The final step of model prep involved the conversion of categorical values into new model features e.g where the column country had a value of UK, this became a column 'country-uk' and so on for guest country of origin.  This flattening of the data allows the model to assess the influence of each country.</p>
-            <h3>4.2 Model Assessment</h3>
-                <p>To be able to assess a model it's important to have a benchmark for accuracy, which for classification models is the majority class, in this case the majority is not a booking since 58% of all enquiries did not result in bookings </p>
-                <p>The confusion matrix consists of 4 quadrants:</p>
-                <ul>
-                    <li>True Positives (TP) = instance where the actual value is 'booking' = 1 and the model predicted 'booking' = 1 </li>
-                    <li>False Positives (FP) = instances where the actual value is 'booking' = 0 but the model predicted 'booking' = 1</li>
-                    <li>True Negatives (TN) = instances where the actual value is 'booking' = 0 and the model predicted 'booking' = 0</li>
-                    <li>False Negatives (FN) = instances where the actual value is 'booking' = 1 but the model predicted 'booking' = 0</li>
-                </ul>
-                <p><strong>Accuracy</strong> = The overall correctness of the model = TP+TN / TP+TN+FP+FN</p>
-                <p>This is important to ensure we have clear signals over what the data means and not draw false conclusions.  However if there is a class imbalance in our dataset the accuracy can be skewed</p>
-                <p><strong>Precision</strong> = Accuracy of positive predictions = TP / TP+FP</p>
-                <p>High precision indicates that when the model predicts a positive result, it is likely to be correct. Goal for this metric would be to get as few mistakes as possible when guessing positive labels (bookings)</p>
-                <p><strong>Recall/Sensitivity</strong> = Model's ability to capture all positive instances = TP / TP+FN</p>
-                <p>Measures the proportion of correctly predicted positive instances as a proportion of ACTUAL positive instances</p>
-                <p><strong>F1 Score</strong> = Maximise precision and recall = 2 x TP / 2 x TP+FP+FN</p>
-                <p>F1 is the harmonic mean and weights the score towards the lower of the two components scores essentially penalising precision and recall from disagreeing with each other too much and correctly reflects when either of them fall too close to the value of zero</p>
-                <p>F1 score is commonly used</p>
+        <section id = "modelling">
+            <h2>5 - Modelling</h2>
+                <h3>4.1 Model Prep</h3>
+                    <p>There were many features in the dataset that were potentially interacting and creating hidden patterns that directly influenced whether a guest query would result in a booking.</p>
+                    <p>Exploring these manually is time-consuming and does not uncover the nuances in these patterns.</p>
+                    <p>Machine Learning provides various models to find these patterns amongst the noise.</p>
+                    <p>For datasets with a small number of features, a simple regression may suffice providing a linear relationship which describes the pattern well, e.g y = mx + b</p>
+                    <p>In datasets with more features, a non-linear relationship might describe the pattern better.</p>
+                    <p>Since a key objective of this report was to predict was whether a query would convert to a booking, in was imperative to find the most influential features to report to Airbnb and also to be able to build a model which could be used to predict whether a query would result in a booking</p>
+                    <p>Understanding this, would enable Airbnb to focus their priorities.</p>
+                    <p>Bookings were defined as an enquiry with a booking timestamp.</p>
+                    <p>The target variable was the column named ‘booking’ which was created from the 'ts_booking_at' timestamp.  It was a binary value, where booking = 1, non-booking = 0</p>
+                    <p>In our final dataset, the proportion of bookings stood at 42% of all enquiries.  This is was a fairly even split meaning that we did not need to worry about class imbalance.  Class imbalance can cause bias in the a model due to the target variable appearing infrequently in the dataset</p>  
+                    <p>Since the target was a binary value, this framed the analysis as a classification problem.</p>    
+                    <p>Predictor variables (features) that were were strongly correlated with the target were removed.  These would bias the results since the model would place greater emphasis on the inclusion of these features</p>
+                    <p>Strong correlations indicate that the feature is already inherently linked to the outcome (successful booking), e.g it only appears when booking = 1</p>
+                    <img src="assets/images/ml - dataset - numerical - correlations.PNG" alt="Correlation plot for numerical features">
+                    <p class = "figure">Figure 4.1 Looking for correlations in numerical features.</p>
+                    <p>In figure 4.1, there is a strong correlation between our target variable, 'booking' and 'stay_duration'.  This is because stay_duration is a calculated variable taken from the check-in and check-out dates.  This would only be present for a booking, hence the strong correlation.  This and others were removed</p>
+                    <p>The final step of model prep involved the conversion of categorical values into new model features e.g where the column country had a value of UK, this became a column 'country-uk' and so on for guest country of origin.  This flattening of the data allows the model to assess the influence of each country.</p>
+                <h3>4.2 Model Assessment</h3>
+                    <p>To be able to assess a model it's important to have a benchmark for accuracy, which for classification models is the majority class, in this case the majority is not a booking since 58% of all enquiries did not result in bookings </p>
+                    <p>The confusion matrix consists of 4 quadrants:</p>
+                    <ul>
+                        <li>True Positives (TP) = instance where the actual value is 'booking' = 1 and the model predicted 'booking' = 1 </li>
+                        <li>False Positives (FP) = instances where the actual value is 'booking' = 0 but the model predicted 'booking' = 1</li>
+                        <li>True Negatives (TN) = instances where the actual value is 'booking' = 0 and the model predicted 'booking' = 0</li>
+                        <li>False Negatives (FN) = instances where the actual value is 'booking' = 1 but the model predicted 'booking' = 0</li>
+                    </ul>
+                    <p><strong>Accuracy</strong> = The overall correctness of the model = TP+TN / TP+TN+FP+FN</p>
+                    <p>This is important to ensure we have clear signals over what the data means and not draw false conclusions.  However if there is a class imbalance in our dataset the accuracy can be skewed</p>
+                    <p><strong>Precision</strong> = Accuracy of positive predictions = TP / TP+FP</p>
+                    <p>High precision indicates that when the model predicts a positive result, it is likely to be correct. Goal for this metric would be to get as few mistakes as possible when guessing positive labels (bookings)</p>
+                    <p><strong>Recall/Sensitivity</strong> = Model's ability to capture all positive instances = TP / TP+FN</p>
+                    <p>Measures the proportion of correctly predicted positive instances as a proportion of ACTUAL positive instances</p>
+                    <p><strong>F1 Score</strong> = Maximise precision and recall = 2 x TP / 2 x TP+FP+FN</p>
+                    <p>F1 is the harmonic mean and weights the score towards the lower of the two components scores essentially penalising precision and recall from disagreeing with each other too much and correctly reflects when either of them fall too close to the value of zero</p>
+                    <p>F1 score is commonly used</p>
         </section>
         <hr>
         <section id="results">    
-            <h2>Results</h2>
-            <p>For classification models the naive benchmark is the majority class, meaning that all rows would be classified as non-bookings giving an accuracy score of 58%</p>
-            <p>Three models were built with performance compared and assessed using the F1 score.  These were, single decision tree, tree ensemble (random forest) and XG Boosted model.</p>
-            <p>The confusion matrices for each of our 3 models are shown.</p> 
-            <br>
-            <p>True Positive (lower right)</p>
-            <p>False Positive (upper right)</p>
-            <p>True Negative (upper left)</p>
-            <p>False Negative (lower left)</p>
-            <br>
-            <p>For this analysis most importance was placed on the model that could correctly identify bookings with as few misidentifications as possible.</p>
-            <p>The XGBoost model was able to accurately identify the most actual bookings (1610). However the XGBoost model also made the most False Positive errors.</p> 
-            <img src="assets/images/ml - all models - confusion.PNG" alt="Description of the image">
-            <p class = "figure">Figure 5.1 Comparing confusion matrices for classification models.</p>
-            <p>The results are very close.  Given that most importance is placed on identifying bookings and doing so correctly, the recommendation would be to select the Random Forest model since it has the highest precision score, remember that high precision indicates that when the model predicts a positive result, it is likely to be correct.</p>
-            <p>From the confusion matrix:</p>
-            <p><strong>Correctly identified non-bookings = 3,447</strong></p>
-            <p><strong>Correctly identified bookings = 1,569</strong></p>
-            <p>So from a total of 6,972 rows, the selected model correctly identified 72% of rows, firmly beating the naive benchmark.</p>  
-            <p>Of the 2,897 actual bookings, the random forest model correctly identified 54% of them.</p>
-            <img src="assets/images/ml - all models - f1 and scores - bar graph.PNG" alt="Description of the image">
-            <p class = "figure">Figure 5.1 Comparing confusion matrices for classification models.</p>
-            <p>Our chosen random forest model has identified total_reviews as a key feature for identifying potential bookings. This feature was highlighted in our earlier analysis when we examined properties with no previous bookings in the current dataset. </p>
-            <P>We still don’t know if this is self selecting, but would recommend that Airbnb further investigate the relationship between bookings and non-bookings with the count of reviews.</p> 
-            <img src="assets/images/ml - dt - feature importance.PNG" alt="Top 20 most important features of random forest model">
-            <p class = "figure">Figure 5.1 Comparing confusion matrices for classification models.</p>
-            <P>The most importance features graph reveals what the model found to be the most influencing component features of a successful booking.  Brazil as the guest country of origin is high, so Airbnb should be focusing the majority of the marketing budget on the domestic market.</p>  
-            <p>Not surprisingly travel in August is considered important (as per our EDA), but what is more surprising is that profile_words appears quite high.  This could be self-selecting; clearly profile words on their own do not increase booking propensity but guests hoping to be accepted by a host may be more likely to complete their profile.</p>
-            <P>Finally, we can see that guest_type_new figures quite highly.  This suggests that we should do more to encourage repeat visits, perhaps through email campaigns</P>     
+            <h2>6 - Results</h2>
+                <p>For classification models the naive benchmark is the majority class, meaning that all rows would be classified as non-bookings giving an accuracy score of 58%</p>
+                <p>Three models were built with performance compared and assessed using the F1 score.  These were, single decision tree, tree ensemble (random forest) and XG Boosted model.</p>
+                <p>The confusion matrices for each of our 3 models are shown.</p> 
+                <br>
+                <p>True Positive (lower right)</p>
+                <p>False Positive (upper right)</p>
+                <p>True Negative (upper left)</p>
+                <p>False Negative (lower left)</p>
+                <br>
+                <p>For this analysis most importance was placed on the model that could correctly identify bookings with as few misidentifications as possible.</p>
+                <p>The XGBoost model was able to accurately identify the most actual bookings (1610). However the XGBoost model also made the most False Positive errors.</p> 
+                <img src="assets/images/ml - all models - confusion.PNG" alt="Description of the image">
+                <p class = "figure">Figure 5.1 Comparing confusion matrices for classification models.</p>
+                <p>The results are very close.  Given that most importance is placed on identifying bookings and doing so correctly, the recommendation would be to select the Random Forest model since it has the highest precision score, remember that high precision indicates that when the model predicts a positive result, it is likely to be correct.</p>
+                <p>From the confusion matrix:</p>
+                <p><strong>Correctly identified non-bookings = 3,447</strong></p>
+                <p><strong>Correctly identified bookings = 1,569</strong></p>
+                <p>So from a total of 6,972 rows, the selected model correctly identified 72% of rows, firmly beating the naive benchmark.</p>  
+                <p>Of the 2,897 actual bookings, the random forest model correctly identified 54% of them.</p>
+                <img src="assets/images/ml - all models - f1 and scores - bar graph.PNG" alt="Description of the image">
+                <p class = "figure">Figure 5.1 Comparing confusion matrices for classification models.</p>
+                <p>Our chosen random forest model has identified total_reviews as a key feature for identifying potential bookings. This feature was highlighted in our earlier analysis when we examined properties with no previous bookings in the current dataset. </p>
+                <P>We still don’t know if this is self selecting, but would recommend that Airbnb further investigate the relationship between bookings and non-bookings with the count of reviews.</p> 
+                <img src="assets/images/ml - dt - feature importance.PNG" alt="Top 20 most important features of random forest model">
+                <p class = "figure">Figure 5.1 Comparing confusion matrices for classification models.</p>
+                <P>The most importance features graph reveals what the model found to be the most influencing component features of a successful booking.  Brazil as the guest country of origin is high, so Airbnb should be focusing the majority of the marketing budget on the domestic market.</p>  
+                <p>Not surprisingly travel in August is considered important (as per our EDA), but what is more surprising is that profile_words appears quite high.  This could be self-selecting; clearly profile words on their own do not increase booking propensity but guests hoping to be accepted by a host may be more likely to complete their profile.</p>
+                <P>Finally, we can see that guest_type_new figures quite highly.  This suggests that we should do more to encourage repeat visits, perhaps through email campaigns</P>     
         </section>
         <hr>    
         <section id="conclusion">
-            <h3>Conclusion</h3> 
-            <p><strong>The key metrics for Airbnb to monitor over time should be:</strong></p>
-            <ul>
-                <li>The query to booking rate.  Use this as a threshold.  If the rate falls below this threshold for a prolonged period, this is a cause for concern.  Additionally a count of queries per month is necessary to provide contact to the booking rate as a fall in queries could lead to an increase in conversion without there actually being an increase in bookings.</li>
-                <li>The book_it fail rate.  This should be kept to a minimum as these are customers who want to book</li>
-                <li>Occupancy rate.  This allows Airbnb to understand how well they are matching demand to supply.  This can be viewed at a neighborhood, room type or individual property level <strong>(see appendix 2)</strong></li>
-            </ul> 
-            <p><strong>To increase the number of successful bookings, Airbnb, should:</strong></p>
-            <ul>
-                <li>Focus on the failed book_it events initially.  Using wider data and contacts, will provide greater understanding of these events</li>
-                <li>Seek to understand the content of enquiries particularly from larger groups to see if expanded property information can increase the propensity of bookings.  Suggest running A/B tests with different content based on party size to accurately assess this</li>
-                <li>Develop a post travel customer relationship email programme to solicit property reviews from guests and to maintain engagement with a view to increasing repeat bookings</li>
-                <li>Concentrate marketing budget on the first half of the year to put Airbnb front and centre in the minds of travellers</li>
-                <li>Run A/B tests with messaging to encourage early booking of the most popular properties, particularly if travelling in August</li>
-            </ul> 
-            <p><strong>Further recommendations include:</strong></p>
-            <ol>
-                <li>Extending the scope of this analysis to include further datasets.  In particular:</li>
-                    <ul>
-                        <li>Ecommerce data that provides insight on how these properties are presented and viewed on the web/app might provide helpful insight to the overbooking issue.</li>
-                        <li>Extended property data can provide insight on how important facilities and local amenities are, this would be particularly insightful when splitting the data on party size.</li>
-                        <li>Pricing data will provide valuable insight into how cost affects decision making and will allow the contracting team to better match supply & demand</li>
-                    </ul>
-                <li>In the absence of existing, running A/B tests can provide very specific answers.  Tests might include changing property details, the arrangement of information, the order in which a property appears in a list and experimental urgency messaging</li>
-            </ol>
+            <h3>7 - Conclusion</h3> 
+                <p><strong>The key metrics for Airbnb to monitor over time should be:</strong></p>
+                <ul>
+                    <li>The query to booking rate.  Use this as a threshold.  If the rate falls below this threshold for a prolonged period, this is a cause for concern.  Additionally a count of queries per month is necessary to provide contact to the booking rate as a fall in queries could lead to an increase in conversion without there actually being an increase in bookings.</li>
+                    <li>The book_it fail rate.  This should be kept to a minimum as these are customers who want to book</li>
+                    <li>Occupancy rate.  This allows Airbnb to understand how well they are matching demand to supply.  This can be viewed at a neighborhood, room type or individual property level <strong>(see appendix 2)</strong></li>
+                </ul> 
+                <p><strong>To increase the number of successful bookings, Airbnb, should:</strong></p>
+                <ul>
+                    <li>Focus on the failed book_it events initially.  Using wider data and contacts, will provide greater understanding of these events</li>
+                    <li>Seek to understand the content of enquiries particularly from larger groups to see if expanded property information can increase the propensity of bookings.  Suggest running A/B tests with different content based on party size to accurately assess this</li>
+                    <li>Develop a post travel customer relationship email programme to solicit property reviews from guests and to maintain engagement with a view to increasing repeat bookings</li>
+                    <li>Concentrate marketing budget on the first half of the year to put Airbnb front and centre in the minds of travellers</li>
+                    <li>Run A/B tests with messaging to encourage early booking of the most popular properties, particularly if travelling in August</li>
+                </ul> 
+                <p><strong>Further recommendations include:</strong></p>
+                <ol>
+                    <li>Extending the scope of this analysis to include further datasets.  In particular:</li>
+                        <ul>
+                            <li>Ecommerce data that provides insight on how these properties are presented and viewed on the web/app might provide helpful insight to the overbooking issue.</li>
+                            <li>Extended property data can provide insight on how important facilities and local amenities are, this would be particularly insightful when splitting the data on party size.</li>
+                            <li>Pricing data will provide valuable insight into how cost affects decision making and will allow the contracting team to better match supply & demand</li>
+                        </ul>
+                    <li>In the absence of existing, running A/B tests can provide very specific answers.  Tests might include changing property details, the arrangement of information, the order in which a property appears in a list and experimental urgency messaging</li>
+                </ol>
         </section>
         <hr>
         <section id="appendices">
-            <section id="appendix 1">
-                <h3>Enquiries by neighborhood, room type and party size</h3>
-                    <p>During the EDA stage key features were explored to unearth valuable insights around demand. In table a1, each row sums to 1 and represents the count of all enquiries for that particular room type for that particular neighborhood, split by party size.</p>
-                    <p>For example, 36% of entire home queries in Copacabana were for 2 people, while 58% of shared room queries in Copacabana were for 1 person bookings.  This is particular statistic is not surprising, but the overall table may be helpful to Airbnb executives wishing to understand demand.</p> 
-                    <img src="assets/images/appendix 1 - proportion of all enquiries by neighborhood, room type and party size.PNG" alt="Description of the image">
-                    <p class = "figure">Table A1 - Proportion of all enquiries by neighborhood, room type and party size.</p>
-                    <p>In appendix 2, this was developed further to develop an occupancy rate by neighborhood by month.</p>        
-            </section>
-            <section id="appendix 2">
-                <h3>Occupancy Rate</h3>
-                    <p>Occupancy rate is a metric that some holiday companies track to understand how well they are filling their allocations of property.  In the case of Airbnb, since they don’t own or lease the properties then this may not be as pertinent, but as a measure of performance it is a helpful guide and would help inform strategies around property.</p>  
-                    <p>Occupancy rate is usually performed at the property level, though here has been aggregated to neighborhood level since the relatively small amount of data would be somewhat sporadic. However, it would not be difficult to update the analysis to property level.</p>.
-                    <p>This is of course an approximate occupancy rate as some properties may not be available for rent every night of the year.</p>
-                    <p>The method for this was:</p>
-                    <p><strong>Calculate number of nights booked per month:</strong></p>
-                    <ul>
-                        <li>Create a new dataset for bookings only in 2016 (just one complete year to avoid issues duplicating booking the same dates in different years)</li>
-                        <li>Create a function that looks at the check-in date and the checkout date for each booking and assigns the number of days to the relevant month E.g 29 June 2016  - 3 July would be: June = 2 and July = 2</li>
-                        <li>Add the number of nights taken per month to the new dataset</li>
-                    </ul>
-                    <p><strong>Calculate the number of nights available:</strong></p>
-                    <ul>
-                        <li>Create a calendar dataframe with the number of days per month</li>
-                        <li>Create a new dataset with property id as the primary key, along with room_type and neighborhood</li>
-                        <li>Add the calendar dataframe to the new property dataset</li>
-                        <li>Aggregate to neighborhood level at the same time, multiplying the number of nights per month by the count of properties, to get the total number of nights available per neighborhood per month</li>
-                        <li>Aggregate the number of nights booked per month to neighborhood level</li>
-                        <li>Merge the nights available table with the nights taken table, finding the nights taken as a proportion of nights available</li>
-                        <li>This was a difficult piece of work that came with some problems that still need to be overcome</li>
-                        <li>Some additional rows were added to the dataset and these need to be investigated, but overall it just about works as a proof of concept and may be helpful to the Airbnb team</li>
-                    </ul>
-                <img src="assets/images/appendix 2 - occupancy rate.PNG" alt="Occupancy rate by neighborhood">
-                <p class = "figure"><strong>Table A2</strong> - Occupancy rate by neighborhood</p>
-            </section>
-            <section id="appendix 3">
-                <h3>Neighborhoods by demand</h3>
-                <p>Understanding a little about which neighborhoods were most in demand seemed appropriate.  Table a3 shows the 10 most in demand neighborhoods by query.</p>
-                <img src="assets/images/eda - top ten hoods.PNG" alt="Most in demand neighborhoods">
-                <p class = "figure"><strong>Table A3</strong> - Most in demand neighborhoods</p>
-                <p>The contact & booking columns show the proportion of all contact & booking events by neighborhood. Barra da Tijuca has been highlighted, as it has a notably large proportion of contact events which is reflected by the same proportions in the booking events columns. This could suggest unmet demand.</p>    
-            </section>
-            <section id="appendix 4">
-                <h3>Modelling Methods Explainer</h3>
-                <p>The standard process for running machine learning algorithms on data is to split the data into two sets; the training set and the test set.</p>
-                <p>We let our algorithms learn the relationships on the training data and then we use the test set (the unseen data) to see if those patterns still hold.  If they do then our models have done a good job of recognising underlying patterns and can then be used to make predictions, in our case to guess whether an initial enquiry will lead to a booking.</p>
-                <p>Sometimes, however our models can be overfit, that is to say that instead of understanding relationships, they remember patterns and when we feed them the unseen test data, they perform badly because the patterns are no longer the same.</p>
-                <p><strong>Decision trees</strong> are popular because they are easy to interpret, but they are also prone to overfit.  We can use cross-validation to help overcome this. First of all, a decision tree looks at values in your data and splits accordingly in order to get the most pure categories.  So for example a decision tree being trying to identify an animal, might first split on whether the animal lives on land or at sea, and then (following the land branch) on whether the animal can fly or not. It might then move onto number of legs. Each time it is looking to make the distinction more clear and each decision adds a layer of depth to the tree. The better the distinction, the cleaner (or more pure) the dataset.  Of course, with animals, you can imagine that in order to be really clear there are a lot of questions to ask and you can be very specific.  When the model is asked to classify a new animal that it hasn’t seen before the model might perform badly because it is too specific or overfit. To combat this, we want a more generalised model that performs worse on the training data, but because it is more generalised performs better on unseen data.  In other words, we want a better predictor. </p>
-                <img src="assets/images/5 fold cross validation.PNG" alt="The cross validation process">
-                <p class = "figure"><strong>Figure A4.1</strong> - The Cross-Validation Process</p>
-                <p><strong>Cross-validation</strong> is a method in which we take just our training data (so our test data is left alone) and split it up (into say 5 iterations as shown above).  We then randomly split each iteration into 5 blocks of data, train our model on 4 of those blocks and test on the remaining 1 block.  We take the average score from all iterations and it gives us a good indication of how well the model will perform.  So if we want to find the optimal depth for our animal predictor tree, then we can run cross-validation for the number of depths that we want to compare.  The optimal depth is usually based on a measure called accuracy, which looks at the overall correctness of the model (combination of True Positives and True Negatives).</p>
-                <p>Another way to improve the performance of individual decision trees is to use a process known as bagging.  Bagging helps prevent overfitting by combining the predictions of multiple models. As the name suggests tree ensembles are groups of trees where the performance of the group is aggregated.  In the case of classification models which we are using for our analysis, the final prediction is typically made by majority voting.  Going back to our animal example, if 4 trees say that the animal is a dog and 3 trees say that the animal is a cat, then it will be classified dog. Another technique called Boosting is similar in that it uses multiple trees, however, it selects poorly performing models and iterates through them, improving each subsequent tree by learning from the error in the previous one.</p>
-                <p>In our analysis to find the best predictor of a booking we havecompared decision tree, random forest (tree ensemble) and XGBoost models using cross validation for optimal performance. Image shows the map of our decision tree for the booking analysis.</p>
-                <img src="assets/images/ml - dt - tree plot.PNG" alt="Decision tree plot">
-                <p class = "figure"><strong>Table A4.2</strong> - How a Decision Tree splits data to find the most pure results</p>
-            </section>
-            <section id="appendix 5">
-            </section>
+            <h2>Appendices</h2> 
+                <section id="appendix 1">
+                    <h3>Enquiries by neighborhood, room type and party size</h3>
+                        <p>During the EDA stage key features were explored to unearth valuable insights around demand. In table a1, each row sums to 1 and represents the count of all enquiries for that particular room type for that particular neighborhood, split by party size.</p>
+                        <p>For example, 36% of entire home queries in Copacabana were for 2 people, while 58% of shared room queries in Copacabana were for 1 person bookings.  This is particular statistic is not surprising, but the overall table may be helpful to Airbnb executives wishing to understand demand.</p> 
+                        <img src="assets/images/appendix 1 - proportion of all enquiries by neighborhood, room type and party size.PNG" alt="Description of the image">
+                        <p class = "figure">Table A1 - Proportion of all enquiries by neighborhood, room type and party size.</p>
+                        <p>In appendix 2, this was developed further to develop an occupancy rate by neighborhood by month.</p>        
+                </section>
+                <section id="appendix 2">
+                    <h3>Occupancy Rate</h3>
+                        <p>Occupancy rate is a metric that some holiday companies track to understand how well they are filling their allocations of property.  In the case of Airbnb, since they don’t own or lease the properties then this may not be as pertinent, but as a measure of performance it is a helpful guide and would help inform strategies around property.</p>  
+                        <p>Occupancy rate is usually performed at the property level, though here has been aggregated to neighborhood level since the relatively small amount of data would be somewhat sporadic. However, it would not be difficult to update the analysis to property level.</p>.
+                        <p>This is of course an approximate occupancy rate as some properties may not be available for rent every night of the year.</p>
+                        <p>The method for this was:</p>
+                        <p><strong>Calculate number of nights booked per month:</strong></p>
+                        <ul>
+                            <li>Create a new dataset for bookings only in 2016 (just one complete year to avoid issues duplicating booking the same dates in different years)</li>
+                            <li>Create a function that looks at the check-in date and the checkout date for each booking and assigns the number of days to the relevant month E.g 29 June 2016  - 3 July would be: June = 2 and July = 2</li>
+                            <li>Add the number of nights taken per month to the new dataset</li>
+                        </ul>
+                        <p><strong>Calculate the number of nights available:</strong></p>
+                        <ul>
+                            <li>Create a calendar dataframe with the number of days per month</li>
+                            <li>Create a new dataset with property id as the primary key, along with room_type and neighborhood</li>
+                            <li>Add the calendar dataframe to the new property dataset</li>
+                            <li>Aggregate to neighborhood level at the same time, multiplying the number of nights per month by the count of properties, to get the total number of nights available per neighborhood per month</li>
+                            <li>Aggregate the number of nights booked per month to neighborhood level</li>
+                            <li>Merge the nights available table with the nights taken table, finding the nights taken as a proportion of nights available</li>
+                            <li>This was a difficult piece of work that came with some problems that still need to be overcome</li>
+                            <li>Some additional rows were added to the dataset and these need to be investigated, but overall it just about works as a proof of concept and may be helpful to the Airbnb team</li>
+                        </ul>
+                    <img src="assets/images/appendix 2 - occupancy rate.PNG" alt="Occupancy rate by neighborhood">
+                    <p class = "figure"><strong>Table A2</strong> - Occupancy rate by neighborhood</p>
+                </section>
+                <section id="appendix 3">
+                    <h3>Neighborhoods by demand</h3>
+                    <p>Understanding a little about which neighborhoods were most in demand seemed appropriate.  Table a3 shows the 10 most in demand neighborhoods by query.</p>
+                    <img src="assets/images/eda - top ten hoods.PNG" alt="Most in demand neighborhoods">
+                    <p class = "figure"><strong>Table A3</strong> - Most in demand neighborhoods</p>
+                    <p>The contact & booking columns show the proportion of all contact & booking events by neighborhood. Barra da Tijuca has been highlighted, as it has a notably large proportion of contact events which is reflected by the same proportions in the booking events columns. This could suggest unmet demand.</p>    
+                </section>
+                <section id="appendix 4">
+                    <h3>Modelling Methods Explainer</h3>
+                    <p>The standard process for running machine learning algorithms on data is to split the data into two sets; the training set and the test set.</p>
+                    <p>We let our algorithms learn the relationships on the training data and then we use the test set (the unseen data) to see if those patterns still hold.  If they do then our models have done a good job of recognising underlying patterns and can then be used to make predictions, in our case to guess whether an initial enquiry will lead to a booking.</p>
+                    <p>Sometimes, however our models can be overfit, that is to say that instead of understanding relationships, they remember patterns and when we feed them the unseen test data, they perform badly because the patterns are no longer the same.</p>
+                    <p><strong>Decision trees</strong> are popular because they are easy to interpret, but they are also prone to overfit.  We can use cross-validation to help overcome this. First of all, a decision tree looks at values in your data and splits accordingly in order to get the most pure categories.  So for example a decision tree being trying to identify an animal, might first split on whether the animal lives on land or at sea, and then (following the land branch) on whether the animal can fly or not. It might then move onto number of legs. Each time it is looking to make the distinction more clear and each decision adds a layer of depth to the tree. The better the distinction, the cleaner (or more pure) the dataset.  Of course, with animals, you can imagine that in order to be really clear there are a lot of questions to ask and you can be very specific.  When the model is asked to classify a new animal that it hasn’t seen before the model might perform badly because it is too specific or overfit. To combat this, we want a more generalised model that performs worse on the training data, but because it is more generalised performs better on unseen data.  In other words, we want a better predictor. </p>
+                    <img src="assets/images/5 fold cross validation.PNG" alt="The cross validation process">
+                    <p class = "figure"><strong>Figure A4.1</strong> - The Cross-Validation Process</p>
+                    <p><strong>Cross-validation</strong> is a method in which we take just our training data (so our test data is left alone) and split it up (into say 5 iterations as shown above).  We then randomly split each iteration into 5 blocks of data, train our model on 4 of those blocks and test on the remaining 1 block.  We take the average score from all iterations and it gives us a good indication of how well the model will perform.  So if we want to find the optimal depth for our animal predictor tree, then we can run cross-validation for the number of depths that we want to compare.  The optimal depth is usually based on a measure called accuracy, which looks at the overall correctness of the model (combination of True Positives and True Negatives).</p>
+                    <p>Another way to improve the performance of individual decision trees is to use a process known as bagging.  Bagging helps prevent overfitting by combining the predictions of multiple models. As the name suggests tree ensembles are groups of trees where the performance of the group is aggregated.  In the case of classification models which we are using for our analysis, the final prediction is typically made by majority voting.  Going back to our animal example, if 4 trees say that the animal is a dog and 3 trees say that the animal is a cat, then it will be classified dog. Another technique called Boosting is similar in that it uses multiple trees, however, it selects poorly performing models and iterates through them, improving each subsequent tree by learning from the error in the previous one.</p>
+                    <p>In our analysis to find the best predictor of a booking we havecompared decision tree, random forest (tree ensemble) and XGBoost models using cross validation for optimal performance. Image shows the map of our decision tree for the booking analysis.</p>
+                    <img src="assets/images/ml - dt - tree plot.PNG" alt="Decision tree plot">
+                    <p class = "figure"><strong>Table A4.2</strong> - How a Decision Tree splits data to find the most pure results</p>
+                </section>
         </section>
     </main>
     <footer>
