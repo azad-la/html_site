@@ -26,34 +26,35 @@
         <section id="project1">
             <h2>Predicting bookings from enquiry data for Airbnb</h2>
             <ol>
-                <li><a href="project1.html#executive summary">Executive Summary</a></li>
+                <li><a href="imperial_capstone.html#executive summary">Executive Summary</a></li>
                     <ul>
-                        <li><a href="project1.html#executive summary">1.1 Objective</a></li>
-                        <li><a href="project1.html#executive summary">1.2 Problem</a></li>
-                        <li><a href="project1.html#executive summary">1.3 Key Findings</a></li>
+                        <li><a href="imperial_capstone.html#executive summary">1.1 Objective</a></li>
+                        <li><a href="imperial_capstone.html#executive summary">1.2 Problem</a></li>
+                        <li><a href="imperial_capstone.html#executive summary">1.3 Process</a></li>
+                        <li><a href="imperial_capstone.html#executive summary">1.4 Key Findings</a></li>
                     </ul>
                 </li>
-                <li><a href="project1.html#introduction">Introduction</a></li>
-                <li><a href="project1.html#methods">Methods</a></li>
+                <li><a href="imperial_capstone.html#introduction">Introduction</a></li>
+                <li><a href="imperial_capstone.html#methods">Methods</a></li>
                     <ul>
-                        <li><a href="project1.html#methods"</a>3.1 Joining Data & Cleaning</li>
-                        <li><a href="project1.html#methods"</a>3.2 Machine Learning Prep</li>
-                        <li><a href="project1.html#methods"</a>3.3 Machine Learning Assessment</li>
+                        <li><a href="imperial_capstone.html#methods"</a>3.1 Joining Data & Cleaning</li>
+                        <li><a href="imperial_capstone.html#methods"</a>3.2 Machine Learning Prep</li>
+                        <li><a href="imperial_capstone.html#methods"</a>3.3 Machine Learning Assessment</li>
                     </ul>
-                <li><a href="project1.html#results">Results</a></li>
+                <li><a href="imperial_capstone.html#results">Results</a></li>
                      <ul>
-                        <li><a href="project1.html#results"</a>4.1 EDA</li>
-                        <li><a href="project1.html#results"</a>4.2 Machine Learning</li>
+                        <li><a href="imperial_capstone.html#results"</a>4.1 EDA</li>
+                        <li><a href="imperial_capstone.html#results"</a>4.2 Machine Learning</li>
                     </ul>
-                <li><a href="project1.html#conclusion">Conclusion</a></li>
-                <li><a href="project1.html#appendices">Appendices</a></li>
+                <li><a href="imperial_capstone.html#conclusion">Conclusion</a></li>
+                <li><a href="imperial_capstone.html#appendices">Appendices</a></li>
                     <ul>
-                        <li><a href="index.html">Appendix 1</a></li>
-                        <li><a href="index.html">Appendix 2</a></li>
-                        <li><a href="index.html">Appendix 3</a></li>
-                        <li><a href="index.html">Appendix 4</a></li>
-                        <li><a href="index.html">Appendix 5</a></li>
-                        <li><a href="index.html">Appendix 6</a></li>
+                        <li><a href="imperial_capstone.html#appendix1">Appendix 1</a></li>
+                        <li><a href="imperial_capstone.html#appendix2">Appendix 2</a></li>
+                        <li><a href="imperial_capstone.html#appendix3">Appendix 3</a></li>
+                        <li><a href="imperial_capstone.html#appendix4">Appendix 4</a></li>
+                        <li><a href="imperial_capstone.html#appendix5">Appendix 5</a></li>
+                        <li><a href="imperial_capstone.html#appendix6">Appendix 6</a></li>
                     </ul>
             </ol>
         </section>
@@ -61,10 +62,21 @@
         <section id="executive summary">
             <h2>Executive Summary</h2>
             <h3>1.1 Objective</h3>
-                <p>This report was produced in answer to the questions briefed by the Airbnb team in Rio:<br>What key metrics should be monitored over time, to measure the success of the team's efforts in improving the guest host matching process and why?
-                <br>What areas should we invest in to increase the number of successful bookings in Rio de Janeiro?<br>There is also interest from executives at Airbnb about the work you are doing, 
-                and a desire to understand the broader framing of the challenge of matching supply and demand, thinking beyond the data provided.  What other research, experiments, or approaches could help the company get more clarity on the problem?</p>
-            <h3>1.3 Key Findings</h3>
+                <p>The objective of this report is to answer the questions briefed by the Airbnb team in Rio</p>
+            <h3>1.2 Problem</h3>        
+                <p>What key metrics should be monitored over time, to measure the success of the team's efforts in improving the guest host matching process and why?</p>
+                <p>What areas should be invested in to increase the number of successful bookings in Rio de Janeiro?
+                <p>Thinking beyond the data provided.  What other research, experiments, or approaches could help the company get more clarity on the problem?</p>
+            <h3>1.3 Process</h3>
+                <ol>
+                    <li>Import of business data, supplied by Airbnb</li>
+                    <li>Data preprocessing: ensuring data quality such as removal of duplicated rows, data type conversion, merging of tables</li>                
+                    <li>Exploratory Data Analysis</li>
+                    <li>Machine Learning Preparation: </li>
+                    <li>Modelling: </li>
+                    <li>Model Assessment</li>
+                </ol>
+            <h3>1.4 Key Findings</h3>
                 <ul>
                     <li>More than 50% of all book_it events did not result in a booking and we examined why that might be using machine learning methods.  Unfortunately we were unable to ascertain a reliable pattern that provided insight to this.  Instead we have recommended that further analysis be carried out and have recommended further datasets that might help with this.</li>
                     <li>The count of reviews appeared to be a significant factor in guests propensity to book a particular property.  We also found that new bookers seem to be more important as a component of a successful booking and have recommended that Airbnb focus on a post travel customer relationship </li>
@@ -74,38 +86,31 @@
         <hr>
         <section id="introduction">
             <h2>Introduction</h2>
-            <p>I was interested in this particular problem as I have many years experience working in travel and ecommerce, so the opportunity to perform some analysis on one of the industry’s great success stories appealed.
-                <br>Airbnb was founded by three friends in the summer of 2008 and emerged into an internet juggernaut transforming the way people book and rent travel accommodation.  The sure sign of any successful business is that the brand name evolves into a verb, and sure enough, ‘to Airbnb it’ can now refer to the renting or or hiring of homes or rooms, since Airbnb is two side marketplace.  
-                <br>The Airbnb booking process is fairly simple; a guest finds an available room (listing) that they like, they then contact the host to ask further questions or to book.
+            <p>Airbnb was founded by three friends in the summer of 2008 and emerged into an internet juggernaut transforming the way people book and rent travel accommodation.  The sure sign of any successful business is that the brand name evolves into a verb, and sure enough, ‘to Airbnb it’ can now refer to the renting or or hiring of homes or rooms, since Airbnb is two side marketplace. The Airbnb booking process is fairly simple; a guest finds an available room (listing) that they like, they then contact the host to ask further questions or to book.
                 <br>There are three ways to contact the host:</p>
                 <ol>
                     <li>'Contact_me'</li>
                     <li>'Book_it’</li>
                     <li>'Instant_book'</li>
                 </ol>
-            <p>Instant_book is automatically accepted by the host, so the assumption here is that the property’s availability is linked to Airbnb, or managed by it.  <br>Contact_me’ and ‘book_it’ methods require the host to confirm.  </p>
-            <p>In order for the business to grow, Airbnb would like to increase the number of bookings.  <br>To achieve this, the company has supplied 3 datasets which are to be analysed with appropriate responses given for:</p>
-            <p>The key questions that have been asked are:</p>
-                <ul>
-                    <li>What key metrics should be monitored over time?</li>
-                    <li>What areas should we invest in to increase the number of successful bookings in Rio de Janeiro?</li>   
-                </ul>
-            <p>In approaching this problem, I first considered the different facets of the business that can be influenced.  AirBnB want to increase bookings.  The factors that have to be overcome in order to do this include:</p>
+            <p>Instant_book is automatically accepted by the host, so the assumption is that the property’s availability is linked to Airbnb, or managed by it.  
+            <br>Contact_me’ and ‘book_it’ methods require the host to confirm.</p>
+            <p>Airbnb would like to increase the number of bookings.</p>
+            <p>Airbnb want to increase bookings. What does the journey to conversion look like?  This is an important first consideration in order to consider how we can 'move the dial'. The assumption would be that the following steps must be taken:</p>
             <ol>
-                <li>Ensuring the guest is able to access the Airbnb app/website</li>
-                <li>Ensuring the guest is able to find a property that suits their requirements</li> 
-                <li>The required property being available for the dates required</li>
+                <li>the guest is able to successfully connect to the Airbnb app/website</li>
+                <li>the guest is able to find a property that suits their requirements</li> 
+                <li>the required property is available for the dates required</li>
             </ol>
-            <p>So, my question was, is there anything in the data that can provide Airbnb with some information that can remove obstacles for this part of the journey?    
-            <br>In this instance, we have no app performance data which might help with the first two steps.  However for the 3rd step, whilst we can’t control which dates are available, we can look at the types of neighbourhood, homes and departure dates that are most popular with guests.  
-            In particular, a pertinent question might be, is there a way to find out which properties are most in demand, but not available?  This could help the Airbnb team to look for similar properties to those that often have high occupancy.  
-            Here we are interested in the supply chain side of the business, matching demand to supply.<br>In the second part of this journey, the guest will contact the host.  The factors that have to be overcome in order to do this include:</p>
+            <p>Was there anything in the data that In the data that can provide Airbnb with some information that can remove obstacles for this part of the journey?    
+            <p>In this instance, no app performance data was present, so the first two steps given above can be ignored.  For the 3rd step, looking at the types of neighbourhood, homes and departure dates that are most popular with guests might provide some insight.  In particular, was there a way to find out which properties are most in demand, but not available?</p>   
+            <p>In the second part of the booking journey, the guest contacts the host.  The factors that have to be overcome in order to do this include:</p>
             <ol>
-                <li>The host replying and replying within a desired response time </li>
-                <li>The host being able to effectively answer questions about the property </li>
-                <li>The guests being satisfied with the responses</li>
+                <li>the host replying and replying within a desired response time</li>
+                <li>the host being able to effectively answer questions about the property</li>
+                <li>the guests being satisfied with the responses</li>
             </ol>
-            <p>The second part of the journey raises multiple questions such as do successful bookings have a faster response time than unsuccessful ones?  Does this change depending on the origin of the guest?  Maybe the host prefer not to receive certain types of guest?  Additionally other factors could play into the decision such as party size or seasonality.  Or maybe something as seemingly trivial as the number of number of words in a user profile have some sort of impact?</p>
+            <p>This part of the journey raises multiple questions concerning successful bookings; do they have a faster response time than unsuccessful ones?  Does this change depending on the origin of the guest?  Maybe the host prefer not to receive certain types of guest or group sizes?  Other factors could play into the decision such as party size or seasonality.  Maybe something as seemingly trivial as the number of number of words in a user profile could have some sort of impact?</p>
         </section>
         <hr>
         <section id="methods">
