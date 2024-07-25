@@ -36,25 +36,34 @@ body.index-page {
     color: #ffffff; /* White text color */
 }
 
-body.index-page main h1,
+
+body.index-page main h1 {
+    font-size: 7rem; /* Main heading size */
+    font-weight: 800;
+    color: #ffffff; /* White color for h1 text */
+    line-height: 1.2;
+    margin: 0 0 10px 0; /* Spacing below h1 */
+    padding: 0;
+}
+
 body.index-page main h2,
 body.index-page #epitch p {
     color: #ffffff; /* White color for specific elements */
 }
 
 /* Specific styles for the project1 page */
-body.project1-page {
+body.project-page {
     background-color: #ffffff; /* White background */
     color: #000000; /* Black text */
 }
 
-body.project1-page h1, 
-body.project1-page h2, 
-body.project1-page h3, 
-body.project1-page p, 
-body.project1-page a, 
-body.project1-page nav ul, 
-body.project1-page nav li {
+body.project-page h1, 
+body.project-page h2, 
+body.project-page h3, 
+body.project-page p, 
+body.project-page a, 
+body.project-page nav ul, 
+body.project-page nav li {
     color: #000000; /* Black color for headings, text, links, and navigation */
 }
 
@@ -112,7 +121,7 @@ section {
 /* Link styles */
 a {
     text-decoration: none; /* Remove underline */
-    color: #000000;
+    color: inherit;
 }
 
 a:link,
