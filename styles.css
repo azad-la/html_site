@@ -54,7 +54,11 @@ body.about-page {
     color: #ffffff; /* White text color */
 }
 
-body.about-page p,
+body.about-page p {
+     font-size: 1.5rem;
+     line-height: 1.8; 
+}
+
 body.about-page nav ul, 
 body.about-page nav li {
     color: #000000;
