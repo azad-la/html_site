@@ -95,8 +95,8 @@ body.about-page hr {
     border-color: #ffffff; /* White hr lines */
 }
 
-body.index epitch h3 {
-    padding-top: 5;
+body.index-page #epitch h3 {
+    padding-top: 0.5rem;
 }
 
 body.project-page hr {
