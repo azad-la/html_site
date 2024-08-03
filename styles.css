@@ -95,6 +95,10 @@ body.about-page hr {
     border-color: #ffffff; /* White hr lines */
 }
 
+body.index epitch h3 {
+    padding-top: 5;
+}
+
 body.project-page hr {
     border-color: #000000 !important; /* Black hr lines on project page */
 }
