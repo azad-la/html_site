@@ -32,7 +32,7 @@ body {
 
 /* Specific styles for the index page */
 body.index-page {
-    background-color: #000; /* Green background */
+    background-color: #1C9C6F; /* Green background */
     color: #ffffff; /* White text color */
 }
 
@@ -51,6 +51,7 @@ body.index-page #epitch p {
 }
 
 body.about-page {
+    background-colour: #56575C; /* Grey background for cv */
     color: #ffffff; /* White text color */
 }
 
