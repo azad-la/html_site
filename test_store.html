@@ -4,6 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Store - Product Listing</title>
+    
+    <!-- Data Layer -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'pageview',
+            'pageType': 'productListing',
+            'products': [
+                {
+                    'productID': '1',
+                    'productName': 'Product 1',
+                    'productPrice': 19.99,
+                    'productCategory': 'Category A'
+                },
+                {
+                    'productID': '2',
+                    'productName': 'Product 2',
+                    'productPrice': 29.99,
+                    'productCategory': 'Category B'
+                },
+                {
+                    'productID': '3',
+                    'productName': 'Product 3',
+                    'productPrice': 39.99,
+                    'productCategory': 'Category C'
+                }
+            ]
+        });
+    </script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
